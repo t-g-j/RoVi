@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="Ex4" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\opt\;CMake Files\..\..\..\..\..\opt\ros\;CMake Files\..\..\..\..\..\opt\ros\kinetic\;CMake Files\..\..\..\..\..\opt\ros\kinetic\share\;CMake Files\..\..\..\..\..\opt\ros\kinetic\share\OpenCV-3.2.0-dev\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/mnt/hgfs/github/RoVi_My_Own/ex4/build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="edit_cache">
+         <Option working_dir="/mnt/hgfs/github/RoVi_My_Own/ex4/build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 edit_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/mnt/hgfs/github/RoVi_My_Own/ex4/build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="Ex4">
+         <Option output="/mnt/hgfs/github/RoVi_My_Own/ex4/build/Ex4" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/mnt/hgfs/github/RoVi_My_Own/ex4/build" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/opt/ros/kinetic/include/opencv-3.2.0-dev" />
+            <Add directory="/opt/ros/kinetic/include/opencv-3.2.0-dev/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 Ex4" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="Ex4/fast">
+         <Option output="/mnt/hgfs/github/RoVi_My_Own/ex4/build/Ex4" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/mnt/hgfs/github/RoVi_My_Own/ex4/build" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/opt/ros/kinetic/include/opencv-3.2.0-dev" />
+            <Add directory="/opt/ros/kinetic/include/opencv-3.2.0-dev/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 Ex4/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/hgfs/github/RoVi_My_Own/ex4/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/mnt/hgfs/github/RoVi_My_Own/ex4/src/main.cpp">
+         <Option target="Ex4"/>
+      </Unit>
+      <Unit filename="/mnt/hgfs/github/RoVi_My_Own/ex4/src/visionmethods.cpp">
+         <Option target="Ex4"/>
+      </Unit>
+      <Unit filename="/mnt/hgfs/github/RoVi_My_Own/ex4/src/visionmethods.h">
+         <Option target="Ex4"/>
+      </Unit>
+      <Unit filename="/mnt/hgfs/github/RoVi_My_Own/ex4/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/mnt/hgfs/github/RoVi_My_Own/ex4/../../../../../opt/ros/kinetic/share/OpenCV-3.2.0-dev/OpenCVConfig-version.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\ros\kinetic\share\OpenCV-3.2.0-dev\" />
+      </Unit>
+      <Unit filename="/mnt/hgfs/github/RoVi_My_Own/ex4/../../../../../opt/ros/kinetic/share/OpenCV-3.2.0-dev/OpenCVConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\ros\kinetic\share\OpenCV-3.2.0-dev\" />
+      </Unit>
+      <Unit filename="/mnt/hgfs/github/RoVi_My_Own/ex4/../../../../../opt/ros/kinetic/share/OpenCV-3.2.0-dev/OpenCVModules.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\ros\kinetic\share\OpenCV-3.2.0-dev\" />
+      </Unit>
+      <Unit filename="/mnt/hgfs/github/RoVi_My_Own/ex4/../../../../../opt/ros/kinetic/share/OpenCV-3.2.0-dev/OpenCVModules-none.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\ros\kinetic\share\OpenCV-3.2.0-dev\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>
