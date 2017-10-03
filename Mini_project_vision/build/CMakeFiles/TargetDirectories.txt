@@ -1,0 +1,3 @@
+/mnt/hgfs/7. Semester/RoVi/Vision/Mini_project_vision/build/CMakeFiles/rebuild_cache.dir
+/mnt/hgfs/7. Semester/RoVi/Vision/Mini_project_vision/build/CMakeFiles/edit_cache.dir
+/mnt/hgfs/7. Semester/RoVi/Vision/Mini_project_vision/build/CMakeFiles/MiniProject.dir
