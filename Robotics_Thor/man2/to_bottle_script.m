@@ -1,0 +1,268 @@
+clc
+disp('--------------- Loading data -------------')
+
+eps1 = load('eps1/toBottle.txt');
+eps2 = load('eps2/toBottle.txt');
+eps3 = load('eps3/toBottle.txt');
+eps4 = load('eps4/toBottle.txt');
+eps5 = load('eps5/toBottle.txt');
+eps6 = load('eps6/toBottle.txt');
+eps7 = load('eps7/toBottle.txt');
+eps8 = load('eps8/toBottle.txt');
+eps9 = load('eps9/toBottle.txt');
+eps10 = load('eps10/toBottle.txt');
+eps11 = load('eps11/toBottle.txt');
+eps12 = load('eps12/toBottle.txt');
+eps13 = load('eps13/toBottle.txt');
+eps14 = load('eps14/toBottle.txt');
+eps15 = load('eps15/toBottle.txt');
+eps16 = load('eps16/toBottle.txt');
+eps17 = load('eps17/toBottle.txt');
+eps18 = load('eps18/toBottle.txt');
+eps19 = load('eps19/toBottle.txt');
+eps20 = load('eps20/toBottle.txt');
+eps21 = load('eps21/toBottle.txt');
+eps22 = load('eps22/toBottle.txt');
+eps23 = load('eps23/toBottle.txt');
+eps24 = load('eps24/toBottle.txt');
+eps25 = load('eps25/toBottle.txt');
+eps26 = load('eps26/toBottle.txt');
+eps27 = load('eps27/toBottle.txt');
+eps28 = load('eps28/toBottle.txt');
+eps29 = load('eps29/toBottle.txt');
+eps30 = load('eps30/toBottle.txt');
+
+
+
+
+eps1_PL = eps1(:,1);
+eps2_PL = eps2(:,1);
+eps3_PL = eps3(:,1);
+eps4_PL = eps4(:,1);
+eps5_PL = eps5(:,1);
+eps6_PL = eps6(:,1);
+eps7_PL = eps7(:,1);
+eps8_PL = eps8(:,1);
+eps9_PL = eps9(:,1);
+eps10_PL = eps10(:,1);
+eps11_PL = eps11(:,1);
+eps12_PL = eps12(:,1);
+eps13_PL = eps13(:,1);
+eps14_PL = eps14(:,1);
+eps15_PL = eps15(:,1);
+eps16_PL = eps16(:,1);
+eps17_PL = eps17(:,1);
+eps18_PL = eps18(:,1);
+eps19_PL = eps19(:,1);
+eps20_PL = eps20(:,1);
+eps21_PL = eps21(:,1);
+eps22_PL = eps22(:,1);
+eps23_PL = eps23(:,1);
+eps24_PL = eps24(:,1);
+eps25_PL = eps25(:,1);
+eps26_PL = eps26(:,1);
+eps27_PL = eps27(:,1);
+eps28_PL = eps28(:,1);
+eps29_PL = eps29(:,1);
+eps30_PL = eps30(:,1);
+
+
+eps1_T = eps1(:,2);
+eps2_T = eps2(:,2);
+eps3_T = eps3(:,2);
+eps4_T = eps4(:,2);
+eps5_T = eps5(:,2);
+eps6_T = eps6(:,2);
+eps7_T = eps7(:,2);
+eps8_T = eps8(:,2);
+eps9_T = eps9(:,2);
+eps10_T = eps10(:,2);
+eps11_T = eps11(:,2);
+eps12_T = eps12(:,2);
+eps13_T = eps13(:,2);
+eps14_T = eps14(:,2);
+eps15_T = eps15(:,2);
+eps16_T = eps16(:,2);
+eps17_T = eps17(:,2);
+eps18_T = eps18(:,2);
+eps19_T = eps19(:,2);
+eps20_T = eps20(:,2);
+eps21_T = eps21(:,2);
+eps22_T = eps22(:,2);
+eps23_T = eps23(:,2);
+eps24_T = eps24(:,2);
+eps25_T = eps25(:,2);
+eps26_T = eps26(:,2);
+eps27_T = eps27(:,2);
+eps28_T = eps28(:,2);
+eps29_T = eps29(:,2);
+eps30_T = eps30(:,2);
+
+
+
+eps = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ,1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3.0];
+%time = data(:,2);
+%%
+disp('----------- Descriptive statistics---------------------')
+% MEAN OF PATH-LENGTH
+mean_eps1_PL = mean(eps1_PL);
+mean_eps2_PL = mean(eps2_PL);
+mean_eps3_PL = mean(eps3_PL);
+mean_eps4_PL = mean(eps4_PL);
+mean_eps5_PL = mean(eps5_PL);
+mean_eps6_PL = mean(eps6_PL);
+mean_eps7_PL = mean(eps7_PL);
+mean_eps8_PL = mean(eps8_PL);
+mean_eps9_PL = mean(eps9_PL);
+mean_eps10_PL = mean(eps10_PL);
+mean_eps11_PL = mean(eps11_PL);
+mean_eps12_PL = mean(eps12_PL);
+mean_eps13_PL = mean(eps13_PL);
+mean_eps14_PL = mean(eps14_PL);
+mean_eps15_PL = mean(eps15_PL);
+mean_eps16_PL = mean(eps16_PL);
+mean_eps17_PL = mean(eps17_PL);
+mean_eps18_PL = mean(eps18_PL);
+mean_eps19_PL = mean(eps19_PL);
+mean_eps20_PL = mean(eps20_PL);
+mean_eps21_PL = mean(eps21_PL);
+mean_eps22_PL = mean(eps22_PL);
+mean_eps23_PL = mean(eps23_PL);
+mean_eps24_PL = mean(eps24_PL);
+mean_eps25_PL = mean(eps25_PL);
+mean_eps26_PL = mean(eps26_PL);
+mean_eps27_PL = mean(eps27_PL);
+mean_eps28_PL = mean(eps28_PL);
+mean_eps29_PL = mean(eps29_PL);
+mean_eps30_PL = mean(eps30_PL);
+
+
+mu_PL =[mean_eps1_PL,mean_eps2_PL,mean_eps3_PL,mean_eps4_PL,mean_eps5_PL,mean_eps6_PL,mean_eps7_PL,mean_eps8_PL,mean_eps9_PL,mean_eps10_PL,mean_eps11_PL,mean_eps12_PL,mean_eps13_PL,mean_eps14_PL,mean_eps15_PL,mean_eps16_PL,mean_eps17_PL,mean_eps18_PL,mean_eps19_PL,mean_eps20_PL,mean_eps21_PL,mean_eps22_PL,mean_eps23_PL,mean_eps24_PL,mean_eps25_PL,mean_eps26_PL,mean_eps27_PL,mean_eps28_PL,mean_eps29_PL,mean_eps30_PL];
+
+% MEAN FOR TIME
+mean_eps1_T = mean(eps1_T);
+mean_eps2_T = mean(eps2_T);
+mean_eps3_T = mean(eps3_T);
+mean_eps4_T = mean(eps4_T);
+mean_eps5_T = mean(eps5_T);
+mean_eps6_T = mean(eps6_T);
+mean_eps7_T = mean(eps7_T);
+mean_eps8_T = mean(eps8_T);
+mean_eps9_T = mean(eps9_T);
+mean_eps10_T = mean(eps10_T);
+mean_eps11_T = mean(eps11_T);
+mean_eps12_T = mean(eps12_T);
+mean_eps13_T = mean(eps13_T);
+mean_eps14_T = mean(eps14_T);
+mean_eps15_T = mean(eps15_T);
+mean_eps16_T = mean(eps16_T);
+mean_eps17_T = mean(eps17_T);
+mean_eps18_T = mean(eps18_T);
+mean_eps19_T = mean(eps19_T);
+mean_eps20_T = mean(eps20_T);
+
+mean_eps21_T = mean(eps21_T);
+mean_eps22_T = mean(eps22_T);
+mean_eps23_T = mean(eps23_T);
+mean_eps24_T = mean(eps24_T);
+mean_eps25_T = mean(eps25_T);
+mean_eps26_T = mean(eps26_T);
+mean_eps27_T = mean(eps27_T);
+mean_eps28_T = mean(eps28_T);
+mean_eps29_T = mean(eps29_T);
+mean_eps30_T = mean(eps30_T);
+
+
+mu_T = [mean_eps1_T,mean_eps2_T,mean_eps3_T,mean_eps4_T,mean_eps5_T,mean_eps6_T,mean_eps7_T,mean_eps8_T,mean_eps9_T,mean_eps10_T,mean_eps11_T,mean_eps12_T,mean_eps13_T,mean_eps14_T,mean_eps15_T,mean_eps16_T,mean_eps17_T,mean_eps18_T,mean_eps19_T,mean_eps20_T,mean_eps21_T,mean_eps22_T,mean_eps23_T,mean_eps24_T,mean_eps25_T,mean_eps26_T,mean_eps27_T,mean_eps28_T,mean_eps29_T,mean_eps30_T];
+
+% VAR FOR PATHLENGTH
+var_eps1_PL = var(eps1_PL);
+var_eps2_PL = var(eps2_PL);
+var_eps3_PL = var(eps3_PL);
+var_eps4_PL = var(eps4_PL);
+var_eps5_PL = var(eps5_PL);
+var_eps6_PL = var(eps6_PL);
+var_eps7_PL = var(eps7_PL);
+var_eps8_PL = var(eps8_PL);
+var_eps9_PL = var(eps9_PL);
+var_eps10_PL = var(eps10_PL);
+var_eps11_PL = var(eps11_PL);
+var_eps12_PL = var(eps12_PL);
+var_eps13_PL = var(eps13_PL);
+var_eps14_PL = var(eps14_PL);
+var_eps15_PL = var(eps15_PL);
+var_eps16_PL = var(eps16_PL);
+var_eps17_PL = var(eps17_PL);
+var_eps18_PL = var(eps18_PL);
+var_eps19_PL = var(eps19_PL);
+var_eps20_PL = var(eps20_PL);
+
+var_eps21_PL = var(eps21_PL);
+var_eps22_PL = var(eps22_PL);
+var_eps23_PL = var(eps23_PL);
+var_eps24_PL = var(eps24_PL);
+var_eps25_PL = var(eps25_PL);
+var_eps26_PL = var(eps26_PL);
+var_eps27_PL = var(eps27_PL);
+var_eps28_PL = var(eps28_PL);
+var_eps29_PL = var(eps29_PL);
+var_eps30_PL = var(eps30_PL);
+
+sigma_PL = [var_eps1_PL,var_eps2_PL,var_eps3_PL,var_eps4_PL,var_eps5_PL,var_eps6_PL,var_eps7_PL,var_eps8_PL,var_eps9_PL,var_eps10_PL,var_eps11_PL,var_eps12_PL,var_eps13_PL,var_eps14_PL,var_eps15_PL,var_eps16_PL,var_eps17_PL,var_eps18_PL,var_eps19_PL,var_eps20_PL,var_eps21_PL,var_eps22_PL,var_eps23_PL,var_eps24_PL,var_eps25_PL,var_eps26_PL,var_eps27_PL,var_eps28_PL,var_eps29_PL,var_eps30_PL];
+
+% VAR FOR TIME
+var_eps1_T = var(eps1_T);
+var_eps2_T = var(eps2_T);
+var_eps3_T = var(eps3_T);
+var_eps4_T = var(eps4_T);
+var_eps5_T = var(eps5_T);
+var_eps6_T = var(eps6_T);
+var_eps7_T = var(eps7_T);
+var_eps8_T = var(eps8_T);
+var_eps9_T = var(eps9_T);
+var_eps10_T = var(eps10_T);
+var_eps11_T = var(eps11_T);
+var_eps12_T = var(eps12_T);
+var_eps13_T = var(eps13_T);
+var_eps14_T = var(eps14_T);
+var_eps15_T = var(eps15_T);
+var_eps16_T = var(eps16_T);
+var_eps17_T = var(eps17_T);
+var_eps18_T = var(eps18_T);
+var_eps19_T = var(eps19_T);
+var_eps20_T = var(eps20_T);
+
+var_eps21_T = var(eps21_T);
+var_eps22_T = var(eps22_T);
+var_eps23_T = var(eps23_T);
+var_eps24_T = var(eps24_T);
+var_eps25_T = var(eps25_T);
+var_eps26_T = var(eps26_T);
+var_eps27_T = var(eps27_T);
+var_eps28_T = var(eps28_T);
+var_eps29_T = var(eps29_T);
+var_eps30_T = var(eps30_T);
+
+
+sigma_T = [var_eps1_T,var_eps2_T,var_eps3_T,var_eps4_T,var_eps5_T,var_eps6_T,var_eps7_T,var_eps8_T,var_eps9_T,var_eps10_T,var_eps11_T,var_eps12_T,var_eps13_T,var_eps14_T,var_eps15_T,var_eps16_T,var_eps17_T,var_eps18_T,var_eps19_T,var_eps20_T,var_eps21_T,var_eps22_T,var_eps23_T,var_eps24_T,var_eps25_T,var_eps26_T,var_eps27_T,var_eps28_T,var_eps29_T,var_eps30_T];
+disp('------------------ Table data --------------------')
+T = table(eps',mu_PL',mu_T',sigma_PL',sigma_T','VariableNames',{'Epsilon','mu_PL','mu_T','sigma_PL','sigma_T'})
+
+
+%%
+
+disp('------------------ Plotting data--------------------')
+figure
+grid on
+plot(eps,mu_PL)
+title('Epsilon vs mean of the Pathlenght with 100 samples per run')
+xlabel('size of epsilon');
+ylabel('Path lenght [# steps]');
+
+figure
+grid on
+plot(eps,mu_T)
+title('Epsilon vs mean of the time with 100 samples per run')
+xlabel('size of epsilon');
+ylabel('time used for pathfinding [s]');
+
