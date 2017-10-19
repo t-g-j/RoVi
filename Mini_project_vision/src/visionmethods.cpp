@@ -174,39 +174,102 @@ void VisionMethods::dftFunc(int index){
     //cv::imshow("plane[1]- maybe phase",planes[1]);
     cv::imshow("magI",magI);
 
-    butterWorth(magI);
-
+    butterWorth(magI,2,300,0);
 
     cv::waitKey(0);
 
 }
-void VisionMethods::butterWorth(cv::Mat paddedImage){
+void VisionMethods::butterWorth(cv::Mat paddedImage,int order, int circleRadius, bool filterType){
 
     cv::Mat tmp = paddedImage;
-    cv::Mat filter(tmp.rows,tmp.cols,CV_8UC3,cv::Scalar(0,0,0));
+    cv::Mat filtered;
+    //cv::Mat tmp (400,400,CV_8UC1,cv::Scalar(0) );
+
+    cv::Mat filter(tmp.rows,tmp.cols,CV_8UC1,cv::Scalar(0));
+
+    int n = order;                  // The order of filter / "slope of change"
+    int D_zero = circleRadius;      //Radius for were the filter should be applied
+    float D = 0;                    //Initialze D distance number
+    float tmpVar= 0;                //Redundant variable used for math
+
     /*
-     * Filter the image moon_gray.png in the frequency domain using a Butterworth high-pass filter (G&W Eq. 4.9-3) of order n=2 and diameter D0=250.
-
-Use the pipeline from Exercise 3, but instead of "faking" a filter by setting pixels to zero, create a complex Butterworth high-pass filter (of the same dimensions as the DFT) and multiply it with the DFT response of the image using mulSpectrums (see G&W p. 263).
-
-Optional: Similarly implement and use the Butterworth low-pass filter (G&W Eq. 4.8-5).*/
-
-    /*
-     * D(u, v) = C(u - P>2)2 + (v - Q>2)2D1/2
+     * The double for loops iterate over the whole image
      * */
-    int n = 2;
-    int D_zero = 250;
-    float D = 0;
+    if(filterType == 0){
     for(int i = 0 ; i < tmp.rows ; i++){
         for(int j = 0 ; j<tmp.cols; j++){
-            D = sqrt(  pow( i - (tmp.rows/2) , 2 ) +        pow( j - (tmp.cols/2) ,2 )       );
-            filter.at<float>(i,j) =  1/ ( pow(1 + ( D_zero* D), (2*n)  ) );
+            D = sqrt(  pow( i - (tmp.rows/2) , 2 )+pow( j - (tmp.cols/2) ,2 ) ); //eq 4.8-2 from Digital proccesing book
+            //varTmp = 1 / pow((D_zero/D),2*n) ;
+            tmpVar = 1 / pow((D/D_zero),2*n) ;          //Filter variable
 
+            /*
+             * This if catches any variables higher then allowed for 8-bit image
+             * */
+            if(tmpVar > 255){
+                tmpVar = 255;
+            }
+            //filter.at<uchar>(i,j)=    int(varTmp);
+            filter.at<uchar>(i,j) = (int)(tmpVar);
+            //std::cout<< (int)varTmp<<"  ";
+            //std::cout<<D<<"  ";
         }
+      //  std::cout<<std::endl;
+        }
+    //filtered = applyFilter(tmp,filter);
+    // Used soley for debugging purposes
+//    cv::namedWindow("butterworth filter",cv::WINDOW_NORMAL);
+//    cv::imshow("butterworth filter",filtered);
+//    cv::waitKey(0);
+
     }
+    else if (filterType == 1){
+      for(int i = 0 ; i < tmp.rows ; i++){
+        for(int j = 0 ; j<tmp.cols; j++){
+            D = sqrt(  pow( i - (tmp.rows/2) , 2 )+pow( j - (tmp.cols/2) ,2 ) ); //eq 4.8-2 from Digital proccesing book
+
+            tmpVar = 1 / 1 / pow((D_zero/D),2*n) ;          //Filter variable
+            /*
+             * This if catches any variables higher then allowed for 8-bit image
+             * */
+            if(tmpVar > 255){
+                tmpVar = 255;
+            }
+            //filter.at<uchar>(i,j)=    int(varTmp);
+            filter.at<uchar>(i,j) = (int)(tmpVar);
+            //std::cout<< (int)varTmp<<"  ";
+            //std::cout<<D<<"  ";
+        }
+      //  std::cout<<std::endl;
+        }
+    /*
+     * Used soley for debugging purposes
+    cv::namedWindow("butterworth filter",cv::WINDOW_NORMAL);
     cv::imshow("butterworth filter",filter);
     cv::waitKey(0);
+    */
+      }
+    else{
+        std::cout<<"Something went wrong with the choosing of high/low pass choosing"<<std::endl;
+    }
 }
+cv::Mat VisionMethods::applyFilter(cv::Mat originalImage, cv::Mat filter){
+    cv::Mat Merged;         //Returned merged image
+//    int tmp= 0;             //tmp variable for catching numbers above 255
+//    for(int i = 1; i<originalImage.rows-1; i++){
+//        for(int j = 1 ; j<originalImage.cols-1; j++){
+//            tmp = originalImage.at<uchar>(i,j) * filter.at<uchar>(i,j);
+//            if(tmp > 255){
+//                tmp = 255;
+//            }
+//            std::cout<<tmp<<"  ";
+////            Merged.at<uchar>(i,j)=tmp;
+//        }
+//        std::cout<<std::endl;
+//    }
+    Merged = originalImage.mul(filter);
+    return Merged;
+}
+
 void VisionMethods::openCVfilter(int index){
 
     cv::Mat img = imageVersions[index];     //load image into container
@@ -232,10 +295,12 @@ void VisionMethods::showImg(int index)
     cv::waitKey();
 }
 
+
 void VisionMethods::showAllImages()
 {
     for (int i = 0; i < imageVersions.size(); i++)
     {
+        cv::namedWindow(imageDescription[i], cv::WINDOW_NORMAL);
         cv::imshow(imageDescription[i], imageVersions[i]);
     }
     cv::waitKey();

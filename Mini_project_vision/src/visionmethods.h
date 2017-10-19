@@ -18,7 +18,9 @@ public: //General idea is to create an instance of this class for each image
     void showAllImages();
     void dftFunc(int index);
     void openCVfilter(int index);
-    void butterWorth(cv::Mat paddedimage);
+    void butterWorth(cv::Mat paddedImage, int order, int circleRadius,bool filterType);
+
+    cv::Mat applyFilter(cv::Mat originalImage, cv::Mat filter);
 private:
     std::vector<cv::Mat> imageVersions; //Using index to this vector to acces images stored in the class
     int imgCounter = 0;
