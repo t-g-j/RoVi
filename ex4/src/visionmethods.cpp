@@ -174,18 +174,16 @@ void VisionMethods::dftFunc(int index){
     //cv::imshow("plane[1]- maybe phase",planes[1]);
     cv::imshow("magI",magI);
 
-
+    //butterWorth(magI);
 
 
     cv::waitKey(0);
 
 }
-void VisionMethods::butterWorth(int index, string choice){
+void VisionMethods::butterWorth(cv::Mat paddedImage){
 
-    cv::Mat tmp = imageVersions[index];
+    cv::Mat tmp = paddedImage;
     cv::Mat filter(tmp.rows,tmp.cols,CV_8UC3,cv::Scalar(0,0,0));
-
-
     /*
      * Filter the image moon_gray.png in the frequency domain using a Butterworth high-pass filter (G&W Eq. 4.9-3) of order n=2 and diameter D0=250.
 
@@ -193,16 +191,21 @@ Use the pipeline from Exercise 3, but instead of "faking" a filter by setting pi
 
 Optional: Similarly implement and use the Butterworth low-pass filter (G&W Eq. 4.8-5).*/
 
+    /*
+     * D(u, v) = C(u - P>2)2 + (v - Q>2)2D1/2
+     * */
     int n = 2;
     int D_zero = 250;
-
+    float D = 0;
     for(int i = 0 ; i < tmp.rows ; i++){
         for(int j = 0 ; j<tmp.cols; j++){
-            filter.at<float>(i,j) =  1/ pow((1 + ( D_zero* sqrt(i^2 + j^2)),(2* n) ) );
+            D = sqrt(  pow( i - (tmp.rows/2) , 2 ) +        pow( j - (tmp.cols/2) ,2 )       );
+            filter.at<float>(i,j) =  1/ ( pow(1 + ( D_zero* D), (2*n)  ) );
 
         }
     }
-
+    cv::imshow("butterworth filter",filter);
+    cv::waitKey(0);
 }
 
 void VisionMethods::openCVfilter(int index){
