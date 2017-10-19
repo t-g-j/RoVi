@@ -1,0 +1,3 @@
+/mnt/hgfs/7. Semester/RoVi/Robotics/man2/build/CMakeFiles/edit_cache.dir
+/mnt/hgfs/7. Semester/RoVi/Robotics/man2/build/CMakeFiles/rebuild_cache.dir
+/mnt/hgfs/7. Semester/RoVi/Robotics/man2/build/CMakeFiles/man2.dir
