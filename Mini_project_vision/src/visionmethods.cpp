@@ -16,7 +16,6 @@ VisionMethods::VisionMethods(std::string pathToImage)
     imageDescription.push_back("Image 1. Original image in greyscale");
     cout << "Stored greyscale version of image at 1" << endl;
     imgCounter = 1;
-
 }
 
 VisionMethods::~VisionMethods()
@@ -54,72 +53,52 @@ void VisionMethods::greyIntensityTransform(int intensityC, int whichImage)
 
 void VisionMethods::calcHistogram(int whichImage)
 {
+    int histSize = 256; //Number of bins in the histogram
+    bool uniform = true; bool accumulate = false; //Arguments needed for the histogram calculation
+    cv::Mat histogram; //I think this is where the calculated histogram is stored!
+    float range[] = { 0, 256}; //What does [] means? The upper bound is exclusive
+    const float* histRange = { range };
+    //Meaning of arguments in order {Source arrays, number of source arrays, a mask not defined means it's ignored, where we store the histogram, histogram dimensionality, number of bins, range of values to be measured, uniform histogram, histogram is cleared at the beginning}
+    cv::Mat input =imageVersions[whichImage].clone();
 
-    /*
-     * This code is stolen from stack overflow
-     */
-
-    cv::Mat tmp = imageVersions[whichImage];
-    cv::Mat grayHist;
-    int histSize = 256;
-    int nimages = 1; // Only 1 image, that is the Mat scene.
-    int channels[] = {0} ;// Index for hue channel
-    int dims = 1 ;// Only 1 channel, the hue channel
-    float hranges[] = { 0, 256 }; // hue varies from 0 to 179, see cvtColor
-    const float* ranges = {hranges};
-    bool uniform = true;
-    bool accumulate = false;
-
-                // Compute the histogram.
-     // No mask
-    //hist, dims, histSize, ranges, uniform=true);
-
-    // Now hist will contain the counts in each bin.
-
-
-
-    cv::calcHist(&tmp,1,0,cv::Mat(),grayHist,1,&histSize,&ranges,uniform,accumulate);
-//    cv::imshow("Grey hist",grayHist);
-//    cv::waitKey(0);
-    const int hist_w = 1024;    //Width of my histogram
-    const int hist_h = 500;     //height of my histogram
-    const int bin_w = cvRound( (double) hist_w/histSize );//Setting the width of my bin
-    cv::Mat histImage(hist_h,hist_w,CV_8UC3,cv::Scalar(255,255,255) );    //Image to contain histogram
-    cv::normalize(grayHist,grayHist,0,histImage.rows,cv::NORM_MINMAX,-1,cv::Mat() );//Normalize the "first" histogram
-
-    /*
-     * This for loop draws the rettangles that makes up our histogram
-     * */
-    for(int i = 1; i<histSize+1;i++){
-        /* This is a histogram with lines */
-        //        cv::line(histImage, cv::Point( bin_w*(i-1), hist_h-cvRound(grayHist.at<float>(i-1))  ),
-        //                            cv::Point( bin_w*(i),hist_h - cvRound(grayHist.at<float>(i))  ),
-        //                            cv::Scalar(255,0,0),
-        //                            1,
-        //                            8,
-        //                            0);
-
-        /*A retangular histogram */
-        cv::rectangle(histImage,    cv::Point(bin_w*(i-1),hist_h-cvRound(grayHist.at<float>(i-1)) ),
-                                    cv::Point(bin_w*i,hist_h),
-                                    cv::Scalar(255,0,0),
-                                    1,8,0 );
+    cv::calcHist(&input, 1, 0, cv::noArray(), histogram, 1, &histSize, &histRange, uniform, accumulate );
+    //cout << "Histogram values: " << cvRound(histogram.at<float>(5)) << endl;
+    int hist_w = 512; int hist_h=400;
+    int bin_w = cvRound((double) hist_w/histSize);
+    cv::Mat histImage(hist_h, hist_w, CV_8UC1, cv::Scalar(0));
+    normalize(histogram, histogram, 0, histImage.rows, cv::NORM_MINMAX, -1, cv::Mat());
+    //Lets determine the bin with the highest value!!
+    float maxBinValue = 0;
+    float tmp;
+    for (int i = 0; i <histSize; i++)
+    {
+        tmp =histogram.at<float>(i);
+        if ( tmp > maxBinValue)
+            maxBinValue = tmp;
     }
-    cv::imshow("calcHist",histImage);
-    cv::waitKey(0);
+    for (int i = 0; i < histSize; i++)
+    {
+        cv::line( histImage, cv::Point(bin_w*(i), 0), //Image we're drawing in, point(x, y)
+                cv::Point( bin_w*(i), hist_h -cvRound(histogram.at<float>(i))),
+                cv::Scalar(255), 2, 8, 0);
+    }
+
+
+
+
+    imageVersions.push_back(histImage);
+    imgCounter++;
+    ostringstream oss;
+    oss << "Image " << imgCounter << " . Histogram of image: " << whichImage;
+    string description = oss.str();
+    imageDescription.push_back(description);
+    cout << description << endl;
+
+
 }
 
-void VisionMethods::ShowSizedImg(string imgName, int index)
-{
-    cv::Mat img = imageVersions[index];         //Load the decied image into dummie Mat
-    cv::namedWindow(imgName,cv::WINDOW_NORMAL); //Names the output window
-    cv::resizeWindow(imgName,1024,720);         //Resizes the windows in the decied size
-    cv::imshow(imgName, img);                   // Shows the image
-
-}
-
-void VisionMethods::dftFunc(int index){
-    cv::Mat img = imageVersions[index];     //Create a dummie image container
+void VisionMethods::dftFunc(int whichImage){
+    cv::Mat img = imageVersions[whichImage];     //Create a dummie image container
 
     cv::imshow("original",img);
 
@@ -128,7 +107,7 @@ void VisionMethods::dftFunc(int index){
     const int m = cv::getOptimalDFTSize( img.rows );
     const int n = cv::getOptimalDFTSize( img.cols ); // on the border add zero pixels
     cv::copyMakeBorder(img, padded, 0, m - img.rows, 0, n - img.cols, cv::BORDER_CONSTANT, cv::Scalar::all(0));
-    cv::imshow("padded",padded);
+    //cv::imshow("padded",padded);
 
     //Make place for both imagninary and real part
     cv::Mat planes[] = {cv::Mat_<float>(padded), cv::Mat::zeros(padded.size(), CV_32F)};
@@ -172,119 +151,434 @@ void VisionMethods::dftFunc(int index){
                                             // viewable image form (float between values 0 and 1).
 
     //cv::imshow("plane[1]- maybe phase",planes[1]);
-    cv::imshow("magI",magI);
 
-    butterWorth(magI,2,300,0);
+    imageVersions.push_back(magI);
+    imgCounter++;
+    ostringstream oss;
+    oss << "Image " << imgCounter << " . Magnitude image of fourier transform of image:  " << whichImage;
+    string description = oss.str();
+    imageDescription.push_back(description);
+    cout << description << endl;
 
-    cv::waitKey(0);
-
-}
-void VisionMethods::butterWorth(cv::Mat paddedImage,int order, int circleRadius, bool filterType){
-
-    cv::Mat tmp = paddedImage;
-    cv::Mat filtered;
-    //cv::Mat tmp (400,400,CV_8UC1,cv::Scalar(0) );
-
-    cv::Mat filter(tmp.rows,tmp.cols,CV_8UC1,cv::Scalar(0));
-
-    int n = order;                  // The order of filter / "slope of change"
-    int D_zero = circleRadius;      //Radius for were the filter should be applied
-    float D = 0;                    //Initialze D distance number
-    float tmpVar= 0;                //Redundant variable used for math
-
-    /*
-     * The double for loops iterate over the whole image
-     * */
-    if(filterType == 0){
-    for(int i = 0 ; i < tmp.rows ; i++){
-        for(int j = 0 ; j<tmp.cols; j++){
-            D = sqrt(  pow( i - (tmp.rows/2) , 2 )+pow( j - (tmp.cols/2) ,2 ) ); //eq 4.8-2 from Digital proccesing book
-            //varTmp = 1 / pow((D_zero/D),2*n) ;
-            tmpVar = 1 / pow((D/D_zero),2*n) ;          //Filter variable
-
-            /*
-             * This if catches any variables higher then allowed for 8-bit image
-             * */
-            if(tmpVar > 255){
-                tmpVar = 255;
-            }
-            //filter.at<uchar>(i,j)=    int(varTmp);
-            filter.at<uchar>(i,j) = (int)(tmpVar);
-            //std::cout<< (int)varTmp<<"  ";
-            //std::cout<<D<<"  ";
-        }
-      //  std::cout<<std::endl;
-        }
-    //filtered = applyFilter(tmp,filter);
-    // Used soley for debugging purposes
-//    cv::namedWindow("butterworth filter",cv::WINDOW_NORMAL);
-//    cv::imshow("butterworth filter",filtered);
+//    //Calculating the inverse DFT
+//    cv::Mat reconstructed;
+//    cv::dft(complexI, reconstructed, cv::DFT_INVERSE|cv::DFT_REAL_OUTPUT);
+//    normalize(reconstructed, reconstructed, 0, 1, CV_MINMAX);
+//    imshow("reconstructed", reconstructed);
 //    cv::waitKey(0);
 
-    }
-    else if (filterType == 1){
-      for(int i = 0 ; i < tmp.rows ; i++){
-        for(int j = 0 ; j<tmp.cols; j++){
-            D = sqrt(  pow( i - (tmp.rows/2) , 2 )+pow( j - (tmp.cols/2) ,2 ) ); //eq 4.8-2 from Digital proccesing book
 
-            tmpVar = 1 / 1 / pow((D_zero/D),2*n) ;          //Filter variable
-            /*
-             * This if catches any variables higher then allowed for 8-bit image
-             * */
-            if(tmpVar > 255){
-                tmpVar = 255;
+}
+
+void VisionMethods::histogramOfRegion(int whichImage, int topLeftX, int topLeftY, int width, int height)
+{
+    int histSize = 256; //Number of bins in the histogram
+    bool uniform = true; bool accumulate = false; //Arguments needed for the histogram calculation
+    cv::Mat histogram; //I think this is where the calculated histogram is stored!
+    float range[] = { 0, 256}; //What does [] means? The upper bound is exclusive
+    const float* histRange = { range };
+    //Meaning of arguments in order {Source arrays, number of source arrays, a mask not defined means it's ignored, where we store the histogram, histogram dimensionality, number of bins, range of values to be measured, uniform histogram, histogram is cleared at the beginning}
+
+    //cv::Mat region; //= source(cv::Rect(topLeftX, topLeftY, width, height));
+    cv::Mat source =imageVersions[whichImage].clone();
+    //Creating the region which the histogram spans
+    cv::Mat region = cv::Mat(width, height, CV_8UC1, cv::Scalar(0));
+    for(int x = topLeftX; x<topLeftX+width; x++)
+        for(int y = topLeftY; y<topLeftY+height; y++)
+        {
+            region.at<uchar>(x-topLeftX, y-topLeftY) = source.at<uchar>(y, x);
+        }
+    //Pushing back the region of the original image in our storage
+    imageVersions.push_back(region);
+    imgCounter++;
+    ostringstream oss;
+    oss << "Image " << imgCounter << " . Region of image: " << whichImage;
+    string description = oss.str();
+    imageDescription.push_back(description);
+    cout << description << endl;
+
+
+    cv::calcHist(&region, 1, 0, cv::noArray(), histogram, 1, &histSize, &histRange, uniform, accumulate );
+    //cout << "Histogram values: " << cvRound(histogram.at<float>(5)) << endl;
+    int hist_w = 512; int hist_h=400; //
+    int bin_w = cvRound((double) hist_w/histSize);
+    cv::Mat histImage(hist_h, hist_w, CV_8UC1, cv::Scalar(0));
+    normalize(histogram, histogram, 0, histImage.rows, cv::NORM_MINMAX, -1, cv::Mat());
+    //Lets determine the bin with the highest value!!
+    float maxBinValue = 0;
+    float tmp;
+    for (int i = 0; i <histSize; i++)
+    {
+        tmp =histogram.at<float>(i);
+        if ( tmp > maxBinValue)
+            maxBinValue = tmp;
+    }
+    for (int i = 0; i < histSize; i++)
+    {
+        //if (i <11 || i>histSize-10) This commented section is a sad attempt at getting a white border around the histogram
+        //{
+        //    cv::line( histImage, cv::Point(bin_w*(i), hist_h), //Image we're drawing in, point(x, y)
+        //            cv::Point( bin_w*(i), 0),
+         //           cv::Scalar(255), 2, 8, 0);
+        //}
+        //else
+
+        cv::line( histImage, cv::Point(bin_w*(i), 0), //Image we're drawing in, point(x, y)
+                cv::Point( bin_w*(i), hist_h -cvRound(histogram.at<float>(i))),
+                cv::Scalar(255), 2, 8, 0);
+    }
+
+
+
+
+    imageVersions.push_back(histImage);
+    imgCounter++;
+    ostringstream oss2;
+    oss2 << "Image " << imgCounter << " . Histogram of image: " << whichImage;
+    string description2 = oss2.str();
+    imageDescription.push_back(description2);
+    cout << description2 << endl;
+
+
+}
+
+void VisionMethods::medianFilter(int whichImage, int maskSize) //Mask size is the length of the mask
+//This method is an order statistical filter, the method is to sort all the values in the mask, and choose the median as the value for the pixel in the middle
+{
+    cv::Mat img =imageVersions[whichImage].clone(); //Image we're filtering
+    int xMax = img.rows-(maskSize-1)/2; //These integers asures that we dont acces the image outside of it's borders
+    int yMax = img.cols-(maskSize-1)/2;  //(masksize-1)-2 is due to the 1 pixel in the center we are looking at, and divide by two as only the mask part facing the border is the problem
+    vector<int> medianVec;
+    int median;
+    int medianIndex = (maskSize*maskSize-1)/2; //The minus one is due to the index at vectors starting at 0
+    for (int x = (maskSize-1)/2; x <= xMax; x++) //These 2 for loops go through all of the picture
+        for (int y = (maskSize-1)/2; y<= yMax; y++)
+        {
+            for(int maskX = -(maskSize-1)/2; maskX <= (maskSize-1)/2; maskX++) //Looping through the mask
+                for(int maskY = -(maskSize-1)/2; maskY <= (maskSize-1)/2; maskY++)
+                {
+                    medianVec.push_back(img.at<uchar>(x+maskX, y+maskY));
+                }
+            sort(medianVec.begin(), medianVec.begin()+maskSize*maskSize);
+            median = medianVec[medianIndex];
+            medianVec.clear();
+            img.at<uchar>(x, y) = median;
+        }
+
+
+    imageVersions.push_back(img);
+    imgCounter++;
+    ostringstream oss;
+    oss << "Image " << imgCounter << " . Median filtered image: " << whichImage;
+    string description = oss.str();
+    imageDescription.push_back(description);
+    cout << description << endl;
+}
+
+void VisionMethods::medianFilterV2(int whichImage, int maskSize) //Mask size is the length of the mask
+//This method is an order statistical filter, the method is to sort all the values in the mask, and choose the median as the value for the pixel in the middle
+//It differs from medianFilter by actually saving the filtered values to a new picture
+{
+    cv::Mat img =imageVersions[whichImage].clone(); //Image we're filtering
+    cv::Mat dest = imageVersions[whichImage].clone();
+    int xMax = img.rows-(maskSize-1)/2; //These integers asures that we dont acces the image outside of it's borders
+    int yMax = img.cols-(maskSize-1)/2;  //(masksize-1)-2 is due to the 1 pixel in the center we are looking at, and divide by two as only the mask part facing the border is the problem
+    vector<int> medianVec;
+    int median;
+    int medianIndex = (maskSize*maskSize-1)/2; //The minus one is due to the index at vectors starting at 0
+    for (int x = (maskSize-1)/2; x <= xMax; x++) //These 2 for loops go through all of the picture
+        for (int y = (maskSize-1)/2; y<= yMax; y++)
+        {
+            for(int maskX = -(maskSize-1)/2; maskX <= (maskSize-1)/2; maskX++) //Looping through the mask
+                for(int maskY = -(maskSize-1)/2; maskY <= (maskSize-1)/2; maskY++)
+                {
+                    medianVec.push_back(img.at<uchar>(x+maskX, y+maskY));
+                }
+            sort(medianVec.begin(), medianVec.begin()+maskSize*maskSize);
+            median = medianVec[medianIndex];
+            medianVec.clear();
+            dest.at<uchar>(x, y) = median;
+        }
+
+
+    imageVersions.push_back(dest);
+    imgCounter++;
+    ostringstream oss;
+    oss << "Image " << imgCounter << " . MedianV2 filtered image: " << whichImage;
+    string description = oss.str();
+    imageDescription.push_back(description);
+    cout << description << endl;
+
+}
+
+void VisionMethods::adaptiveMedianFilter(int whichImage, int maxMaskSize)
+{
+    int maskSize = 3;
+    cv::Mat img =imageVersions[whichImage].clone(); //Image we're filtering
+    cv::Mat dest = imageVersions[whichImage].clone();
+    int xMax = img.rows-(maskSize-1)/2; //These integers asures that we dont acces the image outside of it's borders
+    int yMax = img.cols-(maskSize-1)/2;  //(masksize-1)-2 is due to the 1 pixel in the center we are looking at, and divide by two as only the mask part facing the border is the problem
+    vector<int> medianVec;
+    int median;
+    int medianIndex = (maskSize*maskSize-1)/2; //The minus one is due to the index at vectors starting at 0
+    for (int x = (maskSize-1)/2; x <= xMax; x++) //These 2 for loops go through all of the picture
+        for (int y = (maskSize-1)/2; y<= yMax; y++)
+        {
+            for(int maskX = -(maskSize-1)/2; maskX <= (maskSize-1)/2; maskX++) //Looping through the mask
+                for(int maskY = -(maskSize-1)/2; maskY <= (maskSize-1)/2; maskY++)
+                {
+                    medianVec.push_back(img.at<uchar>(x+maskX, y+maskY));
+                }
+            sort(medianVec.begin(), medianVec.begin()+maskSize*maskSize); //Sorting the values in the mask and finding the median
+            median = medianVec[medianIndex];
+
+            if (median == 0 || median == 255) //If we still have salt or pepper in the median, we need to increase the mask size
+            {
+            medianVec.clear();
+                while (maskSize <= maxMaskSize) //Keep increasing as long as our mask is under the max size
+                {
+                    maskSize = maskSize +2;
+                    xMax = img.rows-(maskSize-1)/2; //We also need to update our indexes and bounds to not get any errors
+                    yMax = img.cols-(maskSize-1)/2;
+                    medianIndex = (maskSize*maskSize-1)/2; //The minus one is due to the index at vectors starting at 0
+                    for(int maskX = -(maskSize-1)/2; maskX <= (maskSize-1)/2; maskX++) //Looping through the mask
+                        for(int maskY = -(maskSize-1)/2; maskY <= (maskSize-1)/2; maskY++)
+                        {
+                            medianVec.push_back(img.at<uchar>(x+maskX, y+maskY));
+                        }
+                    sort(medianVec.begin(), medianVec.begin()+maskSize*maskSize); //Sorting the values in the mask and finding the median
+                    median = medianVec[medianIndex];
+                    medianVec.clear();
+
+                    if(median != 0)
+                        if(median != 255)
+                            break;
+
+                }
             }
-            //filter.at<uchar>(i,j)=    int(varTmp);
-            filter.at<uchar>(i,j) = (int)(tmpVar);
-            //std::cout<< (int)varTmp<<"  ";
-            //std::cout<<D<<"  ";
+            //Setting our mask size and indexes back to normal
+            maskSize = 3;
+            xMax = img.rows-(maskSize-1)/2; //We also need to update our indexes and bounds to not get any errors
+            yMax = img.cols-(maskSize-1)/2;
+            medianIndex = (maskSize*maskSize-1)/2; //The minus one is due to the index at vectors starting at 0
+            medianVec.clear();
+            dest.at<uchar>(x, y) = median;
         }
-      //  std::cout<<std::endl;
+
+
+    imageVersions.push_back(dest);
+    imgCounter++;
+    ostringstream oss;
+    oss << "Image " << imgCounter << " . Adaptive median filtered image: " << whichImage;
+    string description = oss.str();
+    imageDescription.push_back(description);
+    cout << description << endl;
+}
+
+void VisionMethods::maxFilter(int whichImage, int maskSize)
+{
+    cv::Mat source =imageVersions[whichImage].clone();//Image using as source for the filter
+    cv::Mat destination =imageVersions[whichImage].clone(); //Image used to write the filtered values to
+    int xMax = source.rows-(maskSize-1)/2; //These integers asures that we dont acces the image outside of it's borders
+    int yMax = source.cols-(maskSize-1)/2;  //(masksize-1)-2 is due to the 1 pixel in the center we are looking at, and divide by two as only the mask part facing the border is the problem
+    vector<int> maskVector;
+    int maxIndex = maskVector.size();
+    int fHat;
+
+    for (int x = (maskSize-1)/2; x <= xMax; x++) //These 2 for loops go through all of the picture //SHould prolly start at 0
+        for (int y = (maskSize-1)/2; y<= yMax; y++)
+        {
+            for(int maskX = -(maskSize-1)/2; maskX <= (maskSize-1)/2; maskX++) //Looping through the mask
+                for(int maskY = -(maskSize-1)/2; maskY <= (maskSize-1)/2; maskY++)
+                {
+                    maskVector.push_back(source.at<uchar>(x+maskX, y+maskY));
+                }
+            sort(maskVector.begin(), maskVector.begin()+maskVector.size());
+            fHat = maskVector[maskVector.size()-1];
+            /* DEBUGGING
+            for (int i = 0; i< maskVector.size(); i++)
+                cout << maskVector[i] << ", ";
+            cout << endl;
+            */
+            maskVector.clear();
+            destination.at<uchar>(x, y) = fHat;
         }
-    /*
-     * Used soley for debugging purposes
-    cv::namedWindow("butterworth filter",cv::WINDOW_NORMAL);
-    cv::imshow("butterworth filter",filter);
-    cv::waitKey(0);
-    */
-      }
-    else{
-        std::cout<<"Something went wrong with the choosing of high/low pass choosing"<<std::endl;
+
+
+    imageVersions.push_back(destination);
+    imgCounter++;
+    ostringstream oss;
+    oss << "Image " << imgCounter << " . Image restoration by max filtering image: " << whichImage;
+    string description = oss.str();
+    imageDescription.push_back(description);
+    cout << description << endl;
+}
+
+
+void VisionMethods::shiftDFT(Mat& fImage )
+{
+    Mat tmp, q0, q1, q2, q3;
+
+        // first crop the image, if it has an odd number of rows or columns
+
+        fImage = fImage(Rect(0, 0, fImage.cols & -2, fImage.rows & -2));
+
+        int cx = fImage.cols/2;
+        int cy = fImage.rows/2;
+
+        // rearrange the quadrants of Fourier image
+        // so that the origin is at the image center
+
+        q0 = fImage(Rect(0, 0, cx, cy));
+        q1 = fImage(Rect(cx, 0, cx, cy));
+        q2 = fImage(Rect(0, cy, cx, cy));
+        q3 = fImage(Rect(cx, cy, cx, cy));
+
+        q0.copyTo(tmp);
+        q3.copyTo(q0);
+        tmp.copyTo(q3);
+
+        q1.copyTo(tmp);
+        q2.copyTo(q1);
+        tmp.copyTo(q2);
+}
+
+Mat VisionMethods::create_spectrum_magnitude_display(Mat& complexImg, bool rearrange)
+{
+    Mat planes[2];
+
+    // compute magnitude spectrum (N.B. for display)
+    // compute log(1 + sqrt(Re(DFT(img))**2 + Im(DFT(img))**2))
+
+    split(complexImg, planes);
+    magnitude(planes[0], planes[1], planes[0]);
+
+    Mat mag = (planes[0]).clone();
+    mag += Scalar::all(1);
+    log(mag, mag);
+
+    if (rearrange)
+    {
+        // re-arrange the quaderants
+        shiftDFT(mag);
     }
-}
-cv::Mat VisionMethods::applyFilter(cv::Mat originalImage, cv::Mat filter){
-    cv::Mat Merged;         //Returned merged image
-//    int tmp= 0;             //tmp variable for catching numbers above 255
-//    for(int i = 1; i<originalImage.rows-1; i++){
-//        for(int j = 1 ; j<originalImage.cols-1; j++){
-//            tmp = originalImage.at<uchar>(i,j) * filter.at<uchar>(i,j);
-//            if(tmp > 255){
-//                tmp = 255;
-//            }
-//            std::cout<<tmp<<"  ";
-////            Merged.at<uchar>(i,j)=tmp;
-//        }
-//        std::cout<<std::endl;
-//    }
-    Merged = originalImage.mul(filter);
-    return Merged;
+
+    normalize(mag, mag, 0, 1, CV_MINMAX);
+
+    return mag;
+
 }
 
-void VisionMethods::openCVfilter(int index){
+void VisionMethods::create_butterworth_lowpass_filter(Mat &dft_Filter, int D, int n)
+{
+    Mat tmp = Mat(dft_Filter.rows, dft_Filter.cols, CV_32F);
 
-    cv::Mat img = imageVersions[index];     //load image into container
-    cv::Mat filtred;                        //Empty container for filtered image
+    Point centre = Point(dft_Filter.rows / 2, dft_Filter.cols / 2);
+    double radius;
 
-    const int kernel_size = 9; // needs to be either 3,5,7 or 9 etc
-    cv::Mat my_kernel = (cv::Mat_<double>(kernel_size,kernel_size) << 1, 1, 1, 1, 1, 1, 1, 1, 1) / ( kernel_size * kernel_size);
-    const int depth = 0;
-    cv::Point anchor = cv::Point(-1,-1);
-    double delta = 0;
-    int borderType = cv::BORDER_DEFAULT;
+    // based on the forumla in the IP notes (p. 130 of 2009/10 version)
+    // see also HIPR2 on-line
 
-    cv::filter2D(img,filtred,-1,my_kernel,cv::Point(-1,-1),0,cv::BORDER_DEFAULT);
-    cv::imshow("openCV filter2D", filtred);
-    cv::waitKey(0);
+    for(int i = 0; i < dft_Filter.rows; i++)
+    {
+        for(int j = 0; j < dft_Filter.cols; j++)
+        {
+            radius = (double) sqrt(pow((i - centre.x), 2.0) + pow((double) (j - centre.y), 2.0));
+            tmp.at<float>(i,j) = (float)
+                        ( 1 / (1 + pow((double) (radius /  D), (double) (2 * n))));
+        }
+    }
+
+    Mat toMerge[] = {tmp, tmp};
+    merge(toMerge, 2, dft_Filter);
+}
+
+void VisionMethods::butterUp(int whichImage, int radiu, int orde)
+{
+    Mat image = imageVersions[whichImage].clone();
+    Mat img, imgGray, imgOutput;	// image object(s)
+
+    Mat padded;		// fourier image objects and arrays
+    Mat complexImg, filter, filterOutput;
+    Mat planes[2], mag;
+
+    int N, M; // fourier image sizes
+
+    int radius = radiu;				// low pass filter parameter
+    int order = orde;				// low pass filter parameter
+
+    const string originalName = "Input Image (grayscale)"; // window name
+    const string spectrumMagName = "Magnitude Image (log transformed)"; // window name
+    const string lowPassName = "Butterworth Low Pass Filtered"; // window name
+    const string filterName = "Filter Image"; // window nam
+
+    img = image.clone();
+    // setup the DFT image sizes
+
+    M = getOptimalDFTSize( img.rows );
+    N = getOptimalDFTSize( img.cols );
+
+    imgGray = img.clone();
+    // setup the DFT images
+
+    copyMakeBorder(imgGray, padded, 0, M - imgGray.rows, 0,
+                   N - imgGray.cols, BORDER_CONSTANT, Scalar::all(0));
+    planes[0] = Mat_<float>(padded);
+    planes[1] = Mat::zeros(padded.size(), CV_32F);
+
+    merge(planes, 2, complexImg);
+
+    // do the DFT
+
+    dft(complexImg, complexImg);
+
+    // construct the filter (same size as complex image)
+
+    filter = complexImg.clone();
+    create_butterworth_lowpass_filter(filter, radius, order);
+
+    // apply filter
+    shiftDFT(complexImg);
+    mulSpectrums(complexImg, filter, complexImg, 0);
+    shiftDFT(complexImg);
+
+    // create magnitude spectrum for display
+
+    mag = create_spectrum_magnitude_display(complexImg, true);
+
+    // do inverse DFT on filtered image
+
+    idft(complexImg, complexImg);
+
+    // split into planes and extract plane 0 as output image
+
+    split(complexImg, planes);
+    normalize(planes[0], imgOutput, 0, 1, CV_MINMAX);
+
+    // do the same with the filter image
+
+    split(filter, planes);
+    normalize(planes[0], filterOutput, 0, 1, CV_MINMAX);
+
+    // display image in window
+//    namedWindow(originalName, WINDOW_NORMAL);
+//    imshow(originalName, imgGray);
+//    namedWindow(spectrumMagName, WINDOW_NORMAL);
+//    imshow(spectrumMagName, mag);
+//    namedWindow(lowPassName, WINDOW_NORMAL);
+//    imshow(lowPassName, imgOutput);
+//    namedWindow(filterName, WINDOW_NORMAL);
+//    imshow(filterName, filterOutput);
+//    waitKey(0);
+
+    imageVersions.push_back(imgOutput);
+    imgCounter++;
+    ostringstream oss;
+    oss << "Image " << imgCounter << " . Image restoration by butterworth filtering: " << whichImage;
+    string description = oss.str();
+    imageDescription.push_back(lowPassName);
+    cout << description << endl;
+
 }
 
 //General purpose methods
@@ -295,7 +589,6 @@ void VisionMethods::showImg(int index)
     cv::waitKey();
 }
 
-
 void VisionMethods::showAllImages()
 {
     for (int i = 0; i < imageVersions.size(); i++)
@@ -303,5 +596,38 @@ void VisionMethods::showAllImages()
         cv::namedWindow(imageDescription[i], cv::WINDOW_NORMAL);
         cv::imshow(imageDescription[i], imageVersions[i]);
     }
+    cv::waitKey(0);
+}
+
+void VisionMethods::showSpecificImages(int img1, int img2, int img3, int img4)
+{
+    //Img 1
+    cv::namedWindow(imageDescription[img1], cv::WINDOW_NORMAL);
+    cv::imshow(imageDescription[img1], imageVersions[img1]);
+    //Img 2
+    cv::namedWindow(imageDescription[img2], cv::WINDOW_NORMAL);
+    cv::imshow(imageDescription[img2], imageVersions[img2]);
+    //img3
+    cv::namedWindow(imageDescription[img3], cv::WINDOW_NORMAL);
+    cv::imshow(imageDescription[img3], imageVersions[img3]);
+    //img4
+    cv::namedWindow(imageDescription[img4], cv::WINDOW_NORMAL);
+    cv::imshow(imageDescription[img4], imageVersions[img4]);
+
     cv::waitKey();
 }
+
+void VisionMethods::writeImages()
+{
+    string nameToWrite;
+    for (int i = 0; i < imageVersions.size(); i++)
+    {
+        stringstream fileName;
+        fileName << "image" << i << ".png";
+        nameToWrite = fileName.str();
+
+        cv::imwrite(nameToWrite, imageVersions[i]);
+    }
+}
+
+
