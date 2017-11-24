@@ -99,6 +99,19 @@ rw::math::Q addConfigurationVector(int size, double j1, double j2,double j3, dou
     myQ(5)=j6;
     return myQ;
 }
+/* gunu code
+zimagejacobian calcZimage (jimage , device, q, state)
+set q , and state,
+
+rotate etc.
+
+jacobian S(6,9)
+
+S.e.setzero
+S.e().block - transposed initialize matrix.
+
+jacobian j = device -> baseJend 
+*/
 
 int main() {
     //Constructs
@@ -114,8 +127,17 @@ int main() {
     uv = pinHoleModel(r,f);
     printPoint(r);
     cout <<calcJacobian(r,uv,f)<<endl;
-    q=addConfigurationVector(6,1,2,1,-1,1,1);
+    q=addConfigurationVector(6,1,2,1,-1,1,1); // invalid position
+
     cout<<q<<endl;
+
+
+
+
+
+
+
+
 
 
 //Assume now that the camera is placed aligned with the tool frame of a Universal UR5 robot residing at a joint configuration q = (1, 2, 1, −1, 1, 1). Compute Zimage(q).

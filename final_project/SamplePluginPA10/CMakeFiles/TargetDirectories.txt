@@ -1,0 +1,3 @@
+/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/edit_cache.dir
+/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/rebuild_cache.dir
+/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir
