@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QCalendarWidget>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDockWidget>
 #include <QtWidgets/QHeaderView>
@@ -34,17 +33,18 @@ public:
     QVBoxLayout *verticalLayout;
     QPushButton *_btn0;
     QPushButton *_btn1;
+    QPushButton *_btn2;
     QCheckBox *_checkBox;
     QSpinBox *_spinBox;
     QSlider *_slider;
     QLabel *_label;
-    QCalendarWidget *_calendar;
+    QLabel *_label_marker;
 
     void setupUi(QDockWidget *SamplePlugin)
     {
         if (SamplePlugin->objectName().isEmpty())
             SamplePlugin->setObjectName(QStringLiteral("SamplePlugin"));
-        SamplePlugin->resize(428, 479);
+        SamplePlugin->resize(603, 627);
         dockWidgetContents = new QWidget();
         dockWidgetContents->setObjectName(QStringLiteral("dockWidgetContents"));
         verticalLayout_2 = new QVBoxLayout(dockWidgetContents);
@@ -60,6 +60,11 @@ public:
         _btn1->setObjectName(QStringLiteral("_btn1"));
 
         verticalLayout->addWidget(_btn1);
+
+        _btn2 = new QPushButton(dockWidgetContents);
+        _btn2->setObjectName(QStringLiteral("_btn2"));
+
+        verticalLayout->addWidget(_btn2);
 
         _checkBox = new QCheckBox(dockWidgetContents);
         _checkBox->setObjectName(QStringLiteral("_checkBox"));
@@ -82,10 +87,10 @@ public:
 
         verticalLayout->addWidget(_label);
 
-        _calendar = new QCalendarWidget(dockWidgetContents);
-        _calendar->setObjectName(QStringLiteral("_calendar"));
+        _label_marker = new QLabel(dockWidgetContents);
+        _label_marker->setObjectName(QStringLiteral("_label_marker"));
 
-        verticalLayout->addWidget(_calendar);
+        verticalLayout->addWidget(_label_marker);
 
 
         verticalLayout_2->addLayout(verticalLayout);
@@ -102,8 +107,10 @@ public:
         SamplePlugin->setWindowTitle(QApplication::translate("SamplePlugin", "DockWidget", 0));
         _btn0->setText(QApplication::translate("SamplePlugin", "PushButton0", 0));
         _btn1->setText(QApplication::translate("SamplePlugin", "PushButton1", 0));
+        _btn2->setText(QApplication::translate("SamplePlugin", "PushButton2", 0));
         _checkBox->setText(QApplication::translate("SamplePlugin", "CheckBox", 0));
         _label->setText(QApplication::translate("SamplePlugin", "Label", 0));
+        _label_marker->setText(QApplication::translate("SamplePlugin", "Label_containing_marker", 0));
     } // retranslateUi
 
 };

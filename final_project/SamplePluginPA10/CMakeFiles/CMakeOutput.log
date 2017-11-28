@@ -1,6 +1,6 @@
-The system is: Linux - 4.10.0-38-generic - x86_64
+The system is: Linux - 4.10.0-40-generic - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-Compiler: /usr/bin/cc 
+Compiler: /usr/bin/gcc 
 Build flags: 
 Id flags: 
 
@@ -13,7 +13,7 @@ Compilation of the C compiler identification source "CMakeCCompilerId.c" produce
 The C compiler identification is GNU, found in "/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/3.5.1/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-Compiler: /usr/bin/c++ 
+Compiler: /usr/bin/g++ 
 Build flags: 
 Id flags: 
 
@@ -28,30 +28,36 @@ The CXX compiler identification is GNU, found in "/mnt/hgfs/github/RoVi_My_Own/f
 Determining if the C compiler works passed with the following output:
 Change Dir: /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_a2cf3/fast"
-/usr/bin/make -f CMakeFiles/cmTC_a2cf3.dir/build.make CMakeFiles/cmTC_a2cf3.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_c5662/fast"
+make: Warning: File 'Makefile' has modification time 8.3 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_c5662.dir/build.make CMakeFiles/cmTC_c5662.dir/build
 make[1]: Entering directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_a2cf3.dir/testCCompiler.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_a2cf3.dir/testCCompiler.c.o   -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_a2cf3
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a2cf3.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_a2cf3.dir/testCCompiler.c.o  -o cmTC_a2cf3 -rdynamic 
+make[1]: Warning: File 'CMakeFiles/cmTC_c5662.dir/flags.make' has modification time 8.3 s in the future
+Building C object CMakeFiles/cmTC_c5662.dir/testCCompiler.c.o
+/usr/bin/gcc     -o CMakeFiles/cmTC_c5662.dir/testCCompiler.c.o   -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_c5662
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c5662.dir/link.txt --verbose=1
+/usr/bin/gcc       CMakeFiles/cmTC_c5662.dir/testCCompiler.c.o  -o cmTC_c5662 -rdynamic 
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
 make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_3b0dc/fast"
-/usr/bin/make -f CMakeFiles/cmTC_3b0dc.dir/build.make CMakeFiles/cmTC_3b0dc.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_7b376/fast"
+make: Warning: File 'Makefile' has modification time 9 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_7b376.dir/build.make CMakeFiles/cmTC_7b376.dir/build
 make[1]: Entering directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_3b0dc.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_3b0dc.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_3b0dc
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3b0dc.dir/link.txt --verbose=1
-/usr/bin/cc      -v CMakeFiles/cmTC_3b0dc.dir/CMakeCCompilerABI.c.o  -o cmTC_3b0dc -rdynamic  
+make[1]: Warning: File 'CMakeFiles/cmTC_7b376.dir/flags.make' has modification time 8.9 s in the future
+Building C object CMakeFiles/cmTC_7b376.dir/CMakeCCompilerABI.c.o
+/usr/bin/gcc     -o CMakeFiles/cmTC_7b376.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_7b376
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7b376.dir/link.txt --verbose=1
+/usr/bin/gcc      -v CMakeFiles/cmTC_7b376.dir/CMakeCCompilerABI.c.o  -o cmTC_7b376 -rdynamic  
 Using built-in specs.
-COLLECT_GCC=/usr/bin/cc
+COLLECT_GCC=/usr/bin/gcc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
 Target: x86_64-linux-gnu
 Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.5' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
@@ -59,25 +65,29 @@ Thread model: posix
 gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.5) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3b0dc' '-rdynamic' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccbwHWEJ.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_3b0dc /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_3b0dc.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7b376' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccILXv5N.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_7b376 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_7b376.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
 make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_3b0dc/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_3b0dc.dir/build.make CMakeFiles/cmTC_3b0dc.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_7b376/fast"]
+  ignore line: [make: Warning: File 'Makefile' has modification time 9 s in the future]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_7b376.dir/build.make CMakeFiles/cmTC_7b376.dir/build]
   ignore line: [make[1]: Entering directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_3b0dc.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_3b0dc.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_3b0dc]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3b0dc.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_3b0dc.dir/CMakeCCompilerABI.c.o  -o cmTC_3b0dc -rdynamic  ]
+  ignore line: [make[1]: Warning: File 'CMakeFiles/cmTC_7b376.dir/flags.make' has modification time 8.9 s in the future]
+  ignore line: [Building C object CMakeFiles/cmTC_7b376.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/gcc     -o CMakeFiles/cmTC_7b376.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_7b376]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7b376.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/gcc      -v CMakeFiles/cmTC_7b376.dir/CMakeCCompilerABI.c.o  -o cmTC_7b376 -rdynamic  ]
   ignore line: [Using built-in specs.]
-  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_GCC=/usr/bin/gcc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper]
   ignore line: [Target: x86_64-linux-gnu]
   ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.5' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
@@ -85,13 +95,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.5) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3b0dc' '-rdynamic' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccbwHWEJ.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_3b0dc /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_3b0dc.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7b376' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccILXv5N.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_7b376 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_7b376.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccbwHWEJ.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccILXv5N.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -109,7 +119,7 @@ Parsed C implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_3b0dc] ==> ignore
+    arg [cmTC_7b376] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o] ==> ignore
@@ -121,7 +131,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_3b0dc.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_7b376.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -155,15 +165,19 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_58fb3/fast"
-/usr/bin/make -f CMakeFiles/cmTC_58fb3.dir/build.make CMakeFiles/cmTC_58fb3.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_be898/fast"
+make: Warning: File 'Makefile' has modification time 8.6 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_be898.dir/build.make CMakeFiles/cmTC_be898.dir/build
 make[1]: Entering directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_58fb3.dir/feature_tests.c.o
-/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_58fb3.dir/feature_tests.c.o   -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/feature_tests.c
-Linking C executable cmTC_58fb3
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_58fb3.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_58fb3.dir/feature_tests.c.o  -o cmTC_58fb3 -rdynamic 
+make[1]: Warning: File 'CMakeFiles/cmTC_be898.dir/flags.make' has modification time 8.6 s in the future
+Building C object CMakeFiles/cmTC_be898.dir/feature_tests.c.o
+/usr/bin/gcc    -std=c11 -o CMakeFiles/cmTC_be898.dir/feature_tests.c.o   -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/feature_tests.c
+Linking C executable cmTC_be898
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_be898.dir/link.txt --verbose=1
+/usr/bin/gcc       CMakeFiles/cmTC_be898.dir/feature_tests.c.o  -o cmTC_be898 -rdynamic 
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
 make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -175,15 +189,19 @@ make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePlu
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_85b4f/fast"
-/usr/bin/make -f CMakeFiles/cmTC_85b4f.dir/build.make CMakeFiles/cmTC_85b4f.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_0bd1a/fast"
+make: Warning: File 'Makefile' has modification time 8.3 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_0bd1a.dir/build.make CMakeFiles/cmTC_0bd1a.dir/build
 make[1]: Entering directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_85b4f.dir/feature_tests.c.o
-/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_85b4f.dir/feature_tests.c.o   -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/feature_tests.c
-Linking C executable cmTC_85b4f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_85b4f.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_85b4f.dir/feature_tests.c.o  -o cmTC_85b4f -rdynamic 
+make[1]: Warning: File 'CMakeFiles/cmTC_0bd1a.dir/flags.make' has modification time 8.3 s in the future
+Building C object CMakeFiles/cmTC_0bd1a.dir/feature_tests.c.o
+/usr/bin/gcc    -std=c99 -o CMakeFiles/cmTC_0bd1a.dir/feature_tests.c.o   -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/feature_tests.c
+Linking C executable cmTC_0bd1a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0bd1a.dir/link.txt --verbose=1
+/usr/bin/gcc       CMakeFiles/cmTC_0bd1a.dir/feature_tests.c.o  -o cmTC_0bd1a -rdynamic 
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
 make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -195,15 +213,19 @@ make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePlu
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_30e38/fast"
-/usr/bin/make -f CMakeFiles/cmTC_30e38.dir/build.make CMakeFiles/cmTC_30e38.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_44179/fast"
+make: Warning: File 'Makefile' has modification time 9 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_44179.dir/build.make CMakeFiles/cmTC_44179.dir/build
 make[1]: Entering directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_30e38.dir/feature_tests.c.o
-/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_30e38.dir/feature_tests.c.o   -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/feature_tests.c
-Linking C executable cmTC_30e38
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_30e38.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_30e38.dir/feature_tests.c.o  -o cmTC_30e38 -rdynamic 
+make[1]: Warning: File 'CMakeFiles/cmTC_44179.dir/flags.make' has modification time 8 s in the future
+Building C object CMakeFiles/cmTC_44179.dir/feature_tests.c.o
+/usr/bin/gcc    -std=c90 -o CMakeFiles/cmTC_44179.dir/feature_tests.c.o   -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/feature_tests.c
+Linking C executable cmTC_44179
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_44179.dir/link.txt --verbose=1
+/usr/bin/gcc       CMakeFiles/cmTC_44179.dir/feature_tests.c.o  -o cmTC_44179 -rdynamic 
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
 make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -213,30 +235,36 @@ make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePlu
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_57295/fast"
-/usr/bin/make -f CMakeFiles/cmTC_57295.dir/build.make CMakeFiles/cmTC_57295.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_8607b/fast"
+make: Warning: File 'Makefile' has modification time 8.7 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_8607b.dir/build.make CMakeFiles/cmTC_8607b.dir/build
 make[1]: Entering directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_57295.dir/testCXXCompiler.cxx.o
-/usr/bin/c++      -o CMakeFiles/cmTC_57295.dir/testCXXCompiler.cxx.o -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_57295
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_57295.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_57295.dir/testCXXCompiler.cxx.o  -o cmTC_57295 -rdynamic 
+make[1]: Warning: File 'CMakeFiles/cmTC_8607b.dir/flags.make' has modification time 8.7 s in the future
+Building CXX object CMakeFiles/cmTC_8607b.dir/testCXXCompiler.cxx.o
+/usr/bin/g++      -o CMakeFiles/cmTC_8607b.dir/testCXXCompiler.cxx.o -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_8607b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8607b.dir/link.txt --verbose=1
+/usr/bin/g++        CMakeFiles/cmTC_8607b.dir/testCXXCompiler.cxx.o  -o cmTC_8607b -rdynamic 
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
 make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_bbfec/fast"
-/usr/bin/make -f CMakeFiles/cmTC_bbfec.dir/build.make CMakeFiles/cmTC_bbfec.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_77aa0/fast"
+make: Warning: File 'Makefile' has modification time 8.4 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_77aa0.dir/build.make CMakeFiles/cmTC_77aa0.dir/build
 make[1]: Entering directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_bbfec.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++      -o CMakeFiles/cmTC_bbfec.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_bbfec
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bbfec.dir/link.txt --verbose=1
-/usr/bin/c++       -v CMakeFiles/cmTC_bbfec.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_bbfec -rdynamic  
+make[1]: Warning: File 'CMakeFiles/cmTC_77aa0.dir/flags.make' has modification time 8.4 s in the future
+Building CXX object CMakeFiles/cmTC_77aa0.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/g++      -o CMakeFiles/cmTC_77aa0.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_77aa0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_77aa0.dir/link.txt --verbose=1
+/usr/bin/g++       -v CMakeFiles/cmTC_77aa0.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_77aa0 -rdynamic  
 Using built-in specs.
-COLLECT_GCC=/usr/bin/c++
+COLLECT_GCC=/usr/bin/g++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
 Target: x86_64-linux-gnu
 Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.5' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
@@ -244,25 +272,29 @@ Thread model: posix
 gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.5) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_bbfec' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc7UBcvg.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_bbfec /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_bbfec.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_77aa0' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccZ2KmFv.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_77aa0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_77aa0.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
 make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_bbfec/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_bbfec.dir/build.make CMakeFiles/cmTC_bbfec.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_77aa0/fast"]
+  ignore line: [make: Warning: File 'Makefile' has modification time 8.4 s in the future]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_77aa0.dir/build.make CMakeFiles/cmTC_77aa0.dir/build]
   ignore line: [make[1]: Entering directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_bbfec.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_bbfec.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_bbfec]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bbfec.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_bbfec.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_bbfec -rdynamic  ]
+  ignore line: [make[1]: Warning: File 'CMakeFiles/cmTC_77aa0.dir/flags.make' has modification time 8.4 s in the future]
+  ignore line: [Building CXX object CMakeFiles/cmTC_77aa0.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/g++      -o CMakeFiles/cmTC_77aa0.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_77aa0]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_77aa0.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/g++       -v CMakeFiles/cmTC_77aa0.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_77aa0 -rdynamic  ]
   ignore line: [Using built-in specs.]
-  ignore line: [COLLECT_GCC=/usr/bin/c++]
+  ignore line: [COLLECT_GCC=/usr/bin/g++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper]
   ignore line: [Target: x86_64-linux-gnu]
   ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.5' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
@@ -270,13 +302,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.5) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_bbfec' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc7UBcvg.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_bbfec /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_bbfec.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_77aa0' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccZ2KmFv.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_77aa0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_77aa0.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cc7UBcvg.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccZ2KmFv.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -294,7 +326,7 @@ Parsed CXX implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_bbfec] ==> ignore
+    arg [cmTC_77aa0] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o] ==> ignore
@@ -306,7 +338,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_bbfec.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_77aa0.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -338,15 +370,19 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_78f18/fast"
-/usr/bin/make -f CMakeFiles/cmTC_78f18.dir/build.make CMakeFiles/cmTC_78f18.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_c0e63/fast"
+make: Warning: File 'Makefile' has modification time 8.9 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_c0e63.dir/build.make CMakeFiles/cmTC_c0e63.dir/build
 make[1]: Entering directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_78f18.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_78f18.dir/feature_tests.cxx.o -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_78f18
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_78f18.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_78f18.dir/feature_tests.cxx.o  -o cmTC_78f18 -rdynamic 
+make[1]: Warning: File 'CMakeFiles/cmTC_c0e63.dir/flags.make' has modification time 8.9 s in the future
+Building CXX object CMakeFiles/cmTC_c0e63.dir/feature_tests.cxx.o
+/usr/bin/g++     -std=c++14 -o CMakeFiles/cmTC_c0e63.dir/feature_tests.cxx.o -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_c0e63
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c0e63.dir/link.txt --verbose=1
+/usr/bin/g++        CMakeFiles/cmTC_c0e63.dir/feature_tests.cxx.o  -o cmTC_c0e63 -rdynamic 
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
 make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -411,15 +447,19 @@ make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePlu
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_98437/fast"
-/usr/bin/make -f CMakeFiles/cmTC_98437.dir/build.make CMakeFiles/cmTC_98437.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_742f8/fast"
+make: Warning: File 'Makefile' has modification time 9 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_742f8.dir/build.make CMakeFiles/cmTC_742f8.dir/build
 make[1]: Entering directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_98437.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_98437.dir/feature_tests.cxx.o -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_98437
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_98437.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_98437.dir/feature_tests.cxx.o  -o cmTC_98437 -rdynamic 
+make[1]: Warning: File 'CMakeFiles/cmTC_742f8.dir/flags.make' has modification time 9 s in the future
+Building CXX object CMakeFiles/cmTC_742f8.dir/feature_tests.cxx.o
+/usr/bin/g++     -std=c++11 -o CMakeFiles/cmTC_742f8.dir/feature_tests.cxx.o -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_742f8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_742f8.dir/link.txt --verbose=1
+/usr/bin/g++        CMakeFiles/cmTC_742f8.dir/feature_tests.cxx.o  -o cmTC_742f8 -rdynamic 
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
 make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -484,15 +524,19 @@ make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePlu
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_2ef23/fast"
-/usr/bin/make -f CMakeFiles/cmTC_2ef23.dir/build.make CMakeFiles/cmTC_2ef23.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_fc718/fast"
+make: Warning: File 'Makefile' has modification time 8.2 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_fc718.dir/build.make CMakeFiles/cmTC_fc718.dir/build
 make[1]: Entering directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_2ef23.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_2ef23.dir/feature_tests.cxx.o -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_2ef23
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2ef23.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_2ef23.dir/feature_tests.cxx.o  -o cmTC_2ef23 -rdynamic 
+make[1]: Warning: File 'CMakeFiles/cmTC_fc718.dir/flags.make' has modification time 8.2 s in the future
+Building CXX object CMakeFiles/cmTC_fc718.dir/feature_tests.cxx.o
+/usr/bin/g++     -std=c++98 -o CMakeFiles/cmTC_fc718.dir/feature_tests.cxx.o -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_fc718
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fc718.dir/link.txt --verbose=1
+/usr/bin/g++        CMakeFiles/cmTC_fc718.dir/feature_tests.cxx.o  -o cmTC_fc718 -rdynamic 
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
 make[1]: Leaving directory '/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/CMakeTmp'
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers

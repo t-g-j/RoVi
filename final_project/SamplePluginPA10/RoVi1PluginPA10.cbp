@@ -64,12 +64,20 @@
             <Add directory="/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10" />
             <Add directory="/opt/ros/kinetic/include/opencv-3.2.0-dev" />
             <Add directory="/opt/ros/kinetic/include/opencv-3.2.0-dev/opencv" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
             <Add directory="/usr/include/x86_64-linux-gnu/qt5" />
             <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore" />
             <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui" />
             <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtOpenGL" />
             <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
             <Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64" />
+            <Add directory="/usr/local/include" />
             <Add directory="/usr/local/include/eigen3" />
          </Compiler>
          <MakeCommands>
@@ -106,12 +114,20 @@
             <Add directory="/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10" />
             <Add directory="/opt/ros/kinetic/include/opencv-3.2.0-dev" />
             <Add directory="/opt/ros/kinetic/include/opencv-3.2.0-dev/opencv" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
             <Add directory="/usr/include/x86_64-linux-gnu/qt5" />
             <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore" />
             <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui" />
             <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtOpenGL" />
             <Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
             <Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64" />
+            <Add directory="/usr/local/include" />
             <Add directory="/usr/local/include/eigen3" />
          </Compiler>
          <MakeCommands>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>428</width>
-    <height>479</height>
+    <width>603</width>
+    <height>627</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,6 +28,13 @@
        <widget class="QPushButton" name="_btn1">
         <property name="text">
          <string>PushButton1</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="_btn2">
+        <property name="text">
+         <string>PushButton2</string>
         </property>
        </widget>
       </item>
@@ -56,7 +63,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QCalendarWidget" name="_calendar"/>
+       <widget class="QLabel" name="_label_marker">
+        <property name="text">
+         <string>Label_containing_marker</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>

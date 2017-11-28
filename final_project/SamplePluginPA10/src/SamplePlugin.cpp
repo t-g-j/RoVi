@@ -35,6 +35,8 @@ SamplePlugin::SamplePlugin():
 	// now connect stuff from the ui component
 	connect(_btn0    ,SIGNAL(pressed()), this, SLOT(btnPressed()) );
 	connect(_btn1    ,SIGNAL(pressed()), this, SLOT(btnPressed()) );
+    connect(_btn2    ,SIGNAL(pressed()), this, SLOT(startTrack())  );
+
 	connect(_spinBox  ,SIGNAL(valueChanged(int)), this, SLOT(btnPressed()) );
 
 	Image textureImage(300,300,Image::GRAY,Image::Depth8U);
@@ -68,8 +70,23 @@ void SamplePlugin::initialize() {
 	}
 	QImage img(image.data, image.cols, image.rows, image.step, QImage::Format_RGB888); // Create QImage from the OpenCV image
 	_label->setPixmap(QPixmap::fromImage(img)); // Show the image at the label in the plugin
+//    logTest();
 }
+void SamplePlugin::startTrack(){
+    QObject *obj = sender();
+    if(obj==_btn2){
+        log().info()<<"Button 2\n";
+        Frame* markerFrame = _wc->findFrame("Marker");
+        _framegrabber->grab(markerFrame, _state);
+        const Image& markerImg = _framegrabber->getImage();
 
+        Mat img = toOpenCVImage(markerImg);
+
+//        QImage qimg(img.data , img.cols , img.rows , img.step , QImage::Format_RGB888);
+//        _label_marker->setPixmap(QPixmap::fromImage(qimg));
+        imwrite("tmp.png",img);
+    }
+}
 void SamplePlugin::open(WorkCell* workcell)
 {
     log().info() << "OPEN" << "\n";
@@ -182,6 +199,11 @@ void SamplePlugin::timer() {
 		unsigned int maxH = 800;
 		_label->setPixmap(p.scaled(maxW,maxH,Qt::KeepAspectRatio));
 	}
+}
+
+void SamplePlugin::logTest(){
+    log().info() <<"I've just written this in the log AKA cout\n";
+
 }
 
 void SamplePlugin::stateChangedListener(const State& state) {

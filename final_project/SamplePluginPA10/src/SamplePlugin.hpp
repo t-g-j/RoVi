@@ -32,11 +32,17 @@ public:
 
     virtual void close();
 
+
+
     virtual void initialize();
+    virtual void logTest();
+
+
 
 private slots:
     void btnPressed();
     void timer();
+    void startTrack();
   
     void stateChangedListener(const rw::kinematics::State& state);
 

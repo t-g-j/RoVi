@@ -2470,16 +2470,6 @@ QtCore/qiodevice.h
 QtCore/qpair.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qdatetime.h
-QtCore/qstring.h
--
-QtCore/qnamespace.h
--
-QtCore/qshareddata.h
--
-limits
--
-
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qdebug.h
 QtCore/qalgorithms.h
 -
@@ -3354,10 +3344,6 @@ qapplication.h
 qbuttongroup.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qbuttongroup.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QCalendarWidget
-qcalendarwidget.h
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcalendarwidget.h
-
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QCheckBox
 qcheckbox.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcheckbox.h
@@ -3480,12 +3466,6 @@ limits.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qbuttongroup.h
 QtCore/qobject.h
--
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcalendarwidget.h
-QtWidgets/qwidget.h
--
-QtCore/qdatetime.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcheckbox.h
@@ -5056,8 +5036,6 @@ QtWidgets/QAction
 QtWidgets/QApplication
 -
 QtWidgets/QButtonGroup
--
-QtWidgets/QCalendarWidget
 -
 QtWidgets/QCheckBox
 -
