@@ -4095,6 +4095,8 @@ rw/math/Transform3D.hpp
 -
 rw/math.hpp
 -
+rw/math/LinearAlgebra.hpp
+-
 string
 -
 vector

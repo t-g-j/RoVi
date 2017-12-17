@@ -34,6 +34,8 @@ public:
     QPushButton *_btn0;
     QPushButton *_btn1;
     QPushButton *_btn2;
+    QPushButton *_btn3;
+    QPushButton *_btn4;
     QCheckBox *_checkBox;
     QSpinBox *_spinBox;
     QSlider *_slider;
@@ -65,6 +67,16 @@ public:
         _btn2->setObjectName(QStringLiteral("_btn2"));
 
         verticalLayout->addWidget(_btn2);
+
+        _btn3 = new QPushButton(dockWidgetContents);
+        _btn3->setObjectName(QStringLiteral("_btn3"));
+
+        verticalLayout->addWidget(_btn3);
+
+        _btn4 = new QPushButton(dockWidgetContents);
+        _btn4->setObjectName(QStringLiteral("_btn4"));
+
+        verticalLayout->addWidget(_btn4);
 
         _checkBox = new QCheckBox(dockWidgetContents);
         _checkBox->setObjectName(QStringLiteral("_checkBox"));
@@ -105,9 +117,11 @@ public:
     void retranslateUi(QDockWidget *SamplePlugin)
     {
         SamplePlugin->setWindowTitle(QApplication::translate("SamplePlugin", "DockWidget", 0));
-        _btn0->setText(QApplication::translate("SamplePlugin", "PushButton0", 0));
-        _btn1->setText(QApplication::translate("SamplePlugin", "PushButton1", 0));
-        _btn2->setText(QApplication::translate("SamplePlugin", "PushButton2", 0));
+        _btn0->setText(QApplication::translate("SamplePlugin", "Load background", 0));
+        _btn1->setText(QApplication::translate("SamplePlugin", "StartTimer", 0));
+        _btn2->setText(QApplication::translate("SamplePlugin", "Open saving files", 0));
+        _btn3->setText(QApplication::translate("SamplePlugin", "Read data", 0));
+        _btn4->setText(QApplication::translate("SamplePlugin", "Initialize", 0));
         _checkBox->setText(QApplication::translate("SamplePlugin", "CheckBox", 0));
         _label->setText(QApplication::translate("SamplePlugin", "Label", 0));
         _label_marker->setText(QApplication::translate("SamplePlugin", "Label_containing_marker", 0));

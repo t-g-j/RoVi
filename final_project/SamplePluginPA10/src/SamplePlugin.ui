@@ -20,21 +20,35 @@
       <item>
        <widget class="QPushButton" name="_btn0">
         <property name="text">
-         <string>PushButton0</string>
+         <string>Load background</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="_btn1">
         <property name="text">
-         <string>PushButton1</string>
+         <string>StartTimer</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="_btn2">
         <property name="text">
-         <string>PushButton2</string>
+         <string>Open saving files</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="_btn3">
+        <property name="text">
+         <string>Read data</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="_btn4">
+        <property name="text">
+         <string>Initialize</string>
         </property>
        </widget>
       </item>

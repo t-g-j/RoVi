@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_SamplePlugin_t {
-    QByteArrayData data[8];
-    char stringdata0[91];
+    QByteArrayData data[10];
+    char stringdata0[109];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -31,18 +31,21 @@ struct qt_meta_stringdata_SamplePlugin_t {
 static const qt_meta_stringdata_SamplePlugin_t qt_meta_stringdata_SamplePlugin = {
     {
 QT_MOC_LITERAL(0, 0, 12), // "SamplePlugin"
-QT_MOC_LITERAL(1, 13, 10), // "btnPressed"
+QT_MOC_LITERAL(1, 13, 10), // "startTrack"
 QT_MOC_LITERAL(2, 24, 0), // ""
-QT_MOC_LITERAL(3, 25, 5), // "timer"
-QT_MOC_LITERAL(4, 31, 10), // "startTrack"
-QT_MOC_LITERAL(5, 42, 20), // "stateChangedListener"
-QT_MOC_LITERAL(6, 63, 21), // "rw::kinematics::State"
-QT_MOC_LITERAL(7, 85, 5) // "state"
+QT_MOC_LITERAL(3, 25, 8), // "setupBot"
+QT_MOC_LITERAL(4, 34, 10), // "btnPressed"
+QT_MOC_LITERAL(5, 45, 5), // "timer"
+QT_MOC_LITERAL(6, 51, 8), // "readFile"
+QT_MOC_LITERAL(7, 60, 20), // "stateChangedListener"
+QT_MOC_LITERAL(8, 81, 21), // "rw::kinematics::State"
+QT_MOC_LITERAL(9, 103, 5) // "state"
 
     },
-    "SamplePlugin\0btnPressed\0\0timer\0"
-    "startTrack\0stateChangedListener\0"
-    "rw::kinematics::State\0state"
+    "SamplePlugin\0startTrack\0\0setupBot\0"
+    "btnPressed\0timer\0readFile\0"
+    "stateChangedListener\0rw::kinematics::State\0"
+    "state"
 };
 #undef QT_MOC_LITERAL
 
@@ -52,7 +55,7 @@ static const uint qt_meta_data_SamplePlugin[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -60,16 +63,20 @@ static const uint qt_meta_data_SamplePlugin[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   34,    2, 0x08 /* Private */,
-       3,    0,   35,    2, 0x08 /* Private */,
-       4,    0,   36,    2, 0x08 /* Private */,
-       5,    1,   37,    2, 0x08 /* Private */,
+       1,    0,   44,    2, 0x08 /* Private */,
+       3,    0,   45,    2, 0x08 /* Private */,
+       4,    0,   46,    2, 0x08 /* Private */,
+       5,    0,   47,    2, 0x08 /* Private */,
+       6,    0,   48,    2, 0x08 /* Private */,
+       7,    1,   49,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 6,    7,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 8,    9,
 
        0        // eod
 };
@@ -80,10 +87,12 @@ void SamplePlugin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         SamplePlugin *_t = static_cast<SamplePlugin *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->btnPressed(); break;
-        case 1: _t->timer(); break;
-        case 2: _t->startTrack(); break;
-        case 3: _t->stateChangedListener((*reinterpret_cast< const rw::kinematics::State(*)>(_a[1]))); break;
+        case 0: _t->startTrack(); break;
+        case 1: _t->setupBot(); break;
+        case 2: _t->btnPressed(); break;
+        case 3: _t->timer(); break;
+        case 4: _t->readFile(); break;
+        case 5: _t->stateChangedListener((*reinterpret_cast< const rw::kinematics::State(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -116,13 +125,13 @@ int SamplePlugin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 6)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 6;
     }
     return _id;
 }

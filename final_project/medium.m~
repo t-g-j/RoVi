@@ -1,0 +1,18 @@
+filename = 'SamplePluginPA10/test_folder/rob_medium/t1/JointLimitAndVelocities.txt';
+pos = 'SamplePluginPA10/test_folder/rob_medium/t1/jointPosAndLimit.txt';
+delimiterIn = ',';
+headerlinesIn = 0;
+A = importdata(filename,delimiterIn,headerlinesIn)
+P = importdata(pos,delimiterIn,headerlinesIn)
+
+A(:,1:7)
+Jlimit = P(:,1:7)
+Jpos = P(:,8:10)
+[n m ]= size(P);
+frames = [1:n];
+
+figure
+hold on
+title('Robot tool positi
+plot(frames,Jpos(:,1),'*red')
+plot(frames,Jpos(:,3),'*blue')
