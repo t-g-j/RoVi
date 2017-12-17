@@ -94,9 +94,57 @@ CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o.provides: CMakeFiles/RoVi1
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o.provides.build: CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o
 
 
+CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
+CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o: src/feature_methods.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o"
+	/usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/feature_methods.cpp
+
+CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.i"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/feature_methods.cpp > CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.i
+
+CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.s"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/feature_methods.cpp -o CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.s
+
+CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o.requires:
+
+.PHONY : CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o.requires
+
+CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o.provides: CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o.requires
+	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o.provides.build
+.PHONY : CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o.provides
+
+CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o.provides.build: CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o
+
+
+CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
+CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o: src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o"
+	/usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/main.cpp
+
+CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.i"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/main.cpp > CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.i
+
+CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.s"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/main.cpp -o CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.s
+
+CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o.requires:
+
+.PHONY : CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o.requires
+
+CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o.provides: CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o.requires
+	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o.provides.build
+.PHONY : CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o.provides
+
+CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o.provides.build: CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o
+
+
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: src/moc_SamplePlugin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o"
 	/usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/moc_SamplePlugin.cpp
 
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.i: cmake_force
@@ -120,7 +168,7 @@ CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o.provides.build: CMakeF
 
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o: qrc_resources.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
 	/usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o -c /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/qrc_resources.cpp
 
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.i: cmake_force
@@ -145,6 +193,8 @@ CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o.provides.build: CMakeFiles/Ro
 # Object files for target RoVi1PluginPA10
 RoVi1PluginPA10_OBJECTS = \
 "CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o" \
+"CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o" \
+"CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o" \
 "CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o" \
 "CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
 
@@ -152,6 +202,8 @@ RoVi1PluginPA10_OBJECTS = \
 RoVi1PluginPA10_EXTERNAL_OBJECTS =
 
 libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o
+libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o
+libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o
 libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o
 libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o
 libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/build.make
@@ -281,7 +333,7 @@ libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_imgcodecs3.so
 libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_imgproc3.so.3.2.0
 libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_core3.so.3.2.0
 libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX shared module libs/Release/libRoVi1PluginPA10.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX shared module libs/Release/libRoVi1PluginPA10.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RoVi1PluginPA10.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -290,6 +342,8 @@ CMakeFiles/RoVi1PluginPA10.dir/build: libs/Release/libRoVi1PluginPA10.so
 .PHONY : CMakeFiles/RoVi1PluginPA10.dir/build
 
 CMakeFiles/RoVi1PluginPA10.dir/requires: CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o.requires
+CMakeFiles/RoVi1PluginPA10.dir/requires: CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o.requires
+CMakeFiles/RoVi1PluginPA10.dir/requires: CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o.requires
 CMakeFiles/RoVi1PluginPA10.dir/requires: CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o.requires
 CMakeFiles/RoVi1PluginPA10.dir/requires: CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o.requires
 

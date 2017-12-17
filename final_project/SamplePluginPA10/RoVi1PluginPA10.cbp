@@ -147,6 +147,15 @@
       <Unit filename="/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/SamplePlugin.ui">
          <Option target="RoVi1PluginPA10"/>
       </Unit>
+      <Unit filename="/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/feature_methods.cpp">
+         <Option target="RoVi1PluginPA10"/>
+      </Unit>
+      <Unit filename="/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/feature_methods.h">
+         <Option target="RoVi1PluginPA10"/>
+      </Unit>
+      <Unit filename="/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/main.cpp">
+         <Option target="RoVi1PluginPA10"/>
+      </Unit>
       <Unit filename="/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/resources.qrc">
          <Option target="RoVi1PluginPA10"/>
       </Unit>

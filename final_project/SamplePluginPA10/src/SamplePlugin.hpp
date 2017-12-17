@@ -30,6 +30,7 @@
 #include "stdio.h"
 #include "vector"
 #include <algorithm>
+#include "feature_methods.h"
 
 class SamplePlugin: public rws::RobWorkStudioPlugin, private Ui::SamplePlugin
 {
@@ -85,8 +86,8 @@ private:
     std::vector<double>Yaw;
     const float fLenght = 823;
     const float  z = 0.5;
-    const float dt = 1.0;
-    const double tau = 32450/1000000;
+    const float dt = .05;
+    const double tau = 35520/1000000;
     int trackPoints = 1;// either 1 or 3 points is possible
     int size;
     std::string file ="fast"; // choose from slow, medium or fast

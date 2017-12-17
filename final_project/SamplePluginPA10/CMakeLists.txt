@@ -67,13 +67,13 @@ QT5_WRAP_UI(UIS_OUT_H ${UIS_FILES})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 # MOC
-QT5_WRAP_CPP(MocSrcFiles src/SamplePlugin.hpp)
+QT5_WRAP_CPP(MocSrcFiles src/SamplePlugin.hpp )
 
 # Rcc the files:
 QT5_ADD_RESOURCES(RccSrcFiles src/resources.qrc)
 
 # Add the source files to build
-SET(SrcFiles src/SamplePlugin.cpp ${UIS_OUT_H})
+SET(SrcFiles src/SamplePlugin.cpp src/feature_methods.cpp src/main.cpp ${UIS_OUT_H})
 
 # The shared library to build:
 ADD_LIBRARY(${PROJECT_NAME} MODULE ${SrcFiles} ${MocSrcFiles}  ${RccSrcFiles})

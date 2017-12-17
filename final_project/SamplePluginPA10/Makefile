@@ -177,6 +177,60 @@ src/SamplePlugin.cpp.s:
 	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.s
 .PHONY : src/SamplePlugin.cpp.s
 
+src/feature_methods.o: src/feature_methods.cpp.o
+
+.PHONY : src/feature_methods.o
+
+# target to build an object file
+src/feature_methods.cpp.o:
+	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o
+.PHONY : src/feature_methods.cpp.o
+
+src/feature_methods.i: src/feature_methods.cpp.i
+
+.PHONY : src/feature_methods.i
+
+# target to preprocess a source file
+src/feature_methods.cpp.i:
+	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.i
+.PHONY : src/feature_methods.cpp.i
+
+src/feature_methods.s: src/feature_methods.cpp.s
+
+.PHONY : src/feature_methods.s
+
+# target to generate assembly for a file
+src/feature_methods.cpp.s:
+	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.s
+.PHONY : src/feature_methods.cpp.s
+
+src/main.o: src/main.cpp.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
 src/moc_SamplePlugin.o: src/moc_SamplePlugin.cpp.o
 
 .PHONY : src/moc_SamplePlugin.o
@@ -219,6 +273,12 @@ help:
 	@echo "... src/SamplePlugin.o"
 	@echo "... src/SamplePlugin.i"
 	@echo "... src/SamplePlugin.s"
+	@echo "... src/feature_methods.o"
+	@echo "... src/feature_methods.i"
+	@echo "... src/feature_methods.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 	@echo "... src/moc_SamplePlugin.o"
 	@echo "... src/moc_SamplePlugin.i"
 	@echo "... src/moc_SamplePlugin.s"

@@ -6,6 +6,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/qrc_resources.cpp" "/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
   "/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/SamplePlugin.cpp" "/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o"
+  "/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/feature_methods.cpp" "/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/src/feature_methods.cpp.o"
+  "/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/main.cpp" "/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/src/main.cpp.o"
   "/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/moc_SamplePlugin.cpp" "/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
