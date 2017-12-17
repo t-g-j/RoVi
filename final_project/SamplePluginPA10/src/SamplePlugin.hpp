@@ -69,6 +69,7 @@ private slots:
     void stateChangedListener(const rw::kinematics::State& state);
 
 
+
 private:
     static cv::Mat toOpenCVImage(const rw::sensor::Image& img);
 
@@ -86,9 +87,13 @@ private:
     std::vector<double>Yaw;
     const float fLenght = 823;
     const float  z = 0.5;
+    double u_center_data;
+    double v_center_data;
     const float dt = .05;
+
     const double tau = 35520/1000000;
     int trackPoints = 1;// either 1 or 3 points is possible
+    bool featureDetect = true;
     int size;
     std::string file ="fast"; // choose from slow, medium or fast
     std::ofstream JointPosAndToolPos;

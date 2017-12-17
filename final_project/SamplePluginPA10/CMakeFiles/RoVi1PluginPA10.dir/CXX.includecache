@@ -1865,6 +1865,8 @@ vector
 /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/vector
 algorithm
 -
+feature_methods.h
+/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/feature_methods.h
 
 /mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/src/feature_methods.cpp
 feature_methods.h

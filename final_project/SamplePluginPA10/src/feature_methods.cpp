@@ -24,7 +24,8 @@ Mat feature_methods::HSVtoBGR(Mat inputImg)
 Mat feature_methods::findBlue(Mat inputImg, Mat outputImg, int lower, int higher)
 {
 
-    inRange(inputImg,Scalar(lower, 100, 50), Scalar(higher,255, 100), outputImg);
+//    inRange(inputImg,Scalar(lower, 150, 50), Scalar(higher,255, 100), outputImg);
+    inRange(inputImg,Scalar(115, 0, 0), Scalar(125,255, 255), outputImg);
     outputImg = erodeWrap(outputImg);
     outputImg = dialateWrap(outputImg);
     return outputImg;
@@ -126,9 +127,9 @@ vector<Vec3f> feature_methods::hoCircle(Mat inputImg, Mat origImg, bool showCirc
             circle( drawingImg, center, radius, Scalar(0,0,255), 3, 8, 0 );
          }
 
-        namedWindow( "Hough Circle detection", CV_WINDOW_AUTOSIZE );
-        imshow( "Hough Circle detection", drawingImg );
-        waitKey(0);
+//        namedWindow( "Hough Circle detection", CV_WINDOW_AUTOSIZE );
+//        imshow( "Hough Circle detection", drawingImg );
+//        waitKey(0);
     }
 
     return circles;
@@ -165,6 +166,8 @@ vector<double> feature_methods::markerOneDetection(Mat &inputImg)
     cout << "Center of marker (x, y): (" << comX << ", " << comY << ")" << endl;
     returnVector.push_back(comX);
     returnVector.push_back(comY);
+//    imwrite("hocircle.png",inputImg);
+
     return returnVector;
 }
 

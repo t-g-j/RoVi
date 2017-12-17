@@ -39,6 +39,8 @@ SamplePlugin::SamplePlugin():
     connect(_btn3    ,SIGNAL(pressed()), this, SLOT(readFile() )   );
     connect(_btn4   ,SIGNAL(pressed() ), this, SLOT(setupBot()) );
 
+
+
 	connect(_spinBox  ,SIGNAL(valueChanged(int)), this, SLOT(btnPressed()) );
 
 	Image textureImage(300,300,Image::GRAY,Image::Depth8U);
@@ -174,12 +176,14 @@ rw::math::Jacobian SamplePlugin::calcJacobianImage(double distance,double U,doub
     jar(0,2)=u/z;
     jar(0,3)=(u*v)/f;
     jar(0,4)=-(pow(f,2) + pow(u,2) ) / f;
+//    jar(0,4)=-(f+ u) / f;
     jar(0,5)= v;
     //Second row
     jar(1,0)=0;
     jar(1,1)=-f/z;
     jar(1,2)=v/z;
-    jar(1,3)=(pow(f,2) + pow(u,2) ) / f;
+    jar(1,3)=(pow(f,2) + pow(v,2) ) / f;
+//    jar(1,3)= (f+v) / f;
     jar(1,4)=-(u*v)/f;
     jar(1,5)= -u;
     return jar;
@@ -294,7 +298,7 @@ void SamplePlugin::close() {
 }
 
 Mat SamplePlugin::toOpenCVImage(const Image& img) {
-	Mat res(img.getHeight(),img.getWidth(), CV_8SC3);
+    Mat res(img.getHeight(),img.getWidth(), CV_8UC3);
 	res.data = (uchar*)img.getImageData();
 	return res;
 }
@@ -308,14 +312,14 @@ void SamplePlugin::btnPressed() {
 		Image::Ptr image;
         image = ImageLoader::Factory::load("/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/markers/Marker1.ppm");
 		_textureRender->setImage(*image);
-        image = ImageLoader::Factory::load("/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/backgrounds/color1.ppm");
+        image = ImageLoader::Factory::load("/mnt/hgfs/github/RoVi_My_Own/final_project/SamplePluginPA10/backgrounds/texture2.ppm");
 		_bgRender->setImage(*image);
 		getRobWorkStudio()->updateAndRepaint();
 	} else if(obj==_btn1){
 		log().info() << "Button 1\n";
 		// Toggle the timer on and off
 		if (!_timer->isActive())
-		    _timer->start(100); // run 10 Hz
+            _timer->start(100); // run 10 Hz
 		else
 			_timer->stop();
 	} else if(obj==_spinBox){
@@ -344,15 +348,21 @@ void SamplePlugin::timer() {
         unsigned int maxH = 800;
         _label->setPixmap(p.scaled(maxW,maxH,Qt::KeepAspectRatio));
 
-	}
-    /* MY CODE */
 
+	}
+    // Get the image as a RW image
+
+
+    /* MY CODE */
     if(trackPoints ==1){
         static int i = 0;
         /* Finding frames */
+
             MovableFrame* marker =(MovableFrame*)_wc->findFrame("Marker");
             MovableFrame* cameraF =(MovableFrame*)_wc->findFrame("Camera");
             MovableFrame* worldFrame = (MovableFrame*) _wc->findFrame("WORLD");
+
+
 
            const rw::math::Vector3D<double> pos(X[i],Y[i],Z[i]);
            const rw::math::RPY<double> rot(Roll[i],Pitch[i],Yaw[i]);
@@ -377,10 +387,36 @@ void SamplePlugin::timer() {
         log().info()<<"MarkerCenterinMarkerFrame\n"<<MarkerCenterInMarkerFrame<<"\n";
         log().info()<<"MarkerCenterInCameraFrame\n"<<MarkerCenterInCameraFrame<<"\n";
 
-        auto u_center_data = fLenght*MarkerCenterInCameraFrame[0]/z;
-        auto v_center_data = fLenght*MarkerCenterInCameraFrame[1]/z;
+        if(featureDetect == true){
+        Frame* cameraFrame = _wc->findFrame("CameraSim");
+        _framegrabber->grab(cameraFrame, _state);
+        const Image& image = _framegrabber->getImage();
 
+        // Convert to OpenCV image
+        Mat im = toOpenCVImage(image);
 
+        Mat imflip;
+        Mat rgbOut;
+        cv::flip(im, imflip, 0);
+        cv::cvtColor(imflip,rgbOut,COLOR_BGR2RGB);
+        imwrite("test.png",rgbOut);
+        std::vector<double>test;
+        test.clear();
+        test = feature_methods::markerOneDetection(rgbOut);
+
+        log().info()<<"im\nx: "<<test[0]<<"\ty: "<<test[1]<<"\n";
+        double off_x = 1024/2;
+        double off_y = 768/2;
+        log().info()<<"OFFSETS\nx: "<<test[0]-off_x<<"\ty: "<<test[1]-off_y<<"\n";
+//        u_center_data = fLenght*(test[0]-off_x)/z;
+//        v_center_data = fLenght*(test[1]-off_y)/z;
+        u_center_data = test[0]-off_x;
+        v_center_data = test[1]-off_y;
+        }
+        else{
+            u_center_data = fLenght*MarkerCenterInCameraFrame[0]/z;
+            v_center_data = fLenght*MarkerCenterInCameraFrame[1]/z;
+        }
         log().info()<<"u: "<<u_center_data<<"\tv:"<<v_center_data<<"\n";
 
         /*************************
@@ -388,7 +424,7 @@ void SamplePlugin::timer() {
          * *********************/
         /****** JACOBIAN ******/
         rw::math::Jacobian J = _device->baseJframe(cameraF,_state);
-        log().info()<<"Jacobian\n"<<J<<"\n";
+//        log().info()<<"Jacobian\n"<<J<<"\n";
         /******* S(q) *******/
         const rw::math::Transform3D<> baseTtool= _device->baseTframe(cameraF,_state);
         rw::math::Rotation3D<double>baseRot;
@@ -397,15 +433,15 @@ void SamplePlugin::timer() {
         baseRot.inverse();
         rw::math::Jacobian S(baseRot);
     //    log().info()<<"baseRot\n"<<baseRot<<"\n";
-        log().info()<<"S(q)\n"<<S<<"\n";
+//        log().info()<<"S(q)\n"<<S<<"\n";
         /********* Jimage ***********/
         rw::math::Jacobian jimage=calcJacobianImage(z,u_center_data,v_center_data,fLenght);
 
         //Zimage
         auto zimage = (jimage*S*J).e();
-        log().info()<<"zimage\n"<<zimage<<"\n";
+//        log().info()<<"zimage\n"<<zimage<<"\n";
         auto zimageT = zimage.transpose();
-        log().info()<<"zimageT\n"<<zimageT<<"\n";
+//        log().info()<<"JIMAGE\n"<<jimage<<"\n";
         auto zimage_tmp = zimageT * (zimage*zimageT).inverse();
         Eigen::VectorXd dudv(2);
         dudv(0)=u_center_data;
@@ -421,7 +457,7 @@ void SamplePlugin::timer() {
         // Account for Tau
         const double wTau = dt-tau;
         // Set max vel
-        rw::math::Q dq_constrained = VelocityLimitReached(rw::math::Q(dq), dt);
+        rw::math::Q dq_constrained = VelocityLimitReached(rw::math::Q(dq), wTau);
         // Add the change in robot configuration
         q_cur += rw::math::Q(-dq_constrained);
         // Update
@@ -445,8 +481,11 @@ void SamplePlugin::timer() {
             errorLog.close();
             JointLimitAndVelocities.close();
             log().info()<<"closed file\n";
-            setupBot();
+
+            if(featureDetect == false){
             trackPoints = 3;
+            setupBot();
+                }
         }
 
     }

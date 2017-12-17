@@ -183,6 +183,7 @@ CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /home/student/RobWork/Rob
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /home/student/RobWork/RobWorkStudio/cmake/../src/rws/RobWorkStudioPlugin.hpp
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: src/SamplePlugin.cpp
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: src/SamplePlugin.hpp
+CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: src/feature_methods.h
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv/cxcore.h
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/calib3d.hpp
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/calib3d/calib3d_c.h
@@ -248,10 +249,12 @@ CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/flann/saving.h
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/flann/timer.h
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/highgui.hpp
+CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/highgui/highgui.hpp
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/highgui/highgui_c.h
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/imgcodecs.hpp
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/imgcodecs/imgcodecs_c.h
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/imgproc.hpp
+CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/imgproc/imgproc.hpp
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/imgproc/imgproc_c.h
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/imgproc/types_c.h
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/ml.hpp
@@ -1168,6 +1171,7 @@ CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /home/student/RobWork
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /home/student/RobWork/RobWorkStudio/cmake/../src/RobWorkStudioConfig.hpp
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /home/student/RobWork/RobWorkStudio/cmake/../src/rws/RobWorkStudioPlugin.hpp
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: src/SamplePlugin.hpp
+CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: src/feature_methods.h
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: src/moc_SamplePlugin.cpp
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv/cxcore.h
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/calib3d.hpp
@@ -1234,10 +1238,12 @@ CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/incl
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/flann/saving.h
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/flann/timer.h
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/highgui.hpp
+CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/highgui/highgui.hpp
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/highgui/highgui_c.h
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/imgcodecs.hpp
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/imgcodecs/imgcodecs_c.h
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/imgproc.hpp
+CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/imgproc/imgproc.hpp
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/imgproc/imgproc_c.h
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/imgproc/types_c.h
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: /opt/ros/kinetic/include/opencv-3.2.0-dev/opencv2/ml.hpp
