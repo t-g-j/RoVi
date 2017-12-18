@@ -157,44 +157,28 @@ void SamplePlugin::startTrack(){
     }
 
 }
-rw::math::Vector2D<double> SamplePlugin::pinHoldeModel(rw::math::VectorND<4,double> point, const int fLength){
-    rw::math::Vector2D<double>uv;
-    uv(0)=(fLength*point(0))/point(2);        // u= f*x/z
-    uv(1)=(fLength*point(1))/point(2);        // v= f*y/z
-    log().info()<<"u:\t"<<uv(0)<<"\n"<<"v:\t"<<uv(1)<<"\n";
-    return uv;
-}
 rw::math::Jacobian SamplePlugin::calcJacobianImage(double distance,double U,double V, double focalLenght){
     rw::math::Jacobian jar(2,6);
     const int f = focalLenght;
     const double u =U;
     const double v =V;
     const double z =distance;
-//    cout<<"**** dimensions of the jacobian *****"<<endl;
-//    cout<<"rows:\t"<< rows<<endl<<"cols:\t"<< cols<<endl;
+
     //First row
     jar(0,0)=-f/z;
     jar(0,1)=0;
     jar(0,2)=u/z;
     jar(0,3)=(u*v)/f;
     jar(0,4)=-(pow(f,2) + pow(u,2) ) / f;
-//    jar(0,4)=-(f+ u) / f;
     jar(0,5)= v;
     //Second row
     jar(1,0)=0;
     jar(1,1)=-f/z;
     jar(1,2)=v/z;
     jar(1,3)=(pow(f,2) + pow(v,2) ) / f;
-//    jar(1,3)= (f+v) / f;
     jar(1,4)=-(u*v)/f;
     jar(1,5)= -u;
     return jar;
-}
-rw::math::Jacobian SamplePlugin::jac(const rw::models::Device::Ptr device, rw::kinematics::State state, const rw::kinematics::Frame* tool,
-                                     const rw::math::Transform3D<double> baseTtool_desired, rw::math::Q q){
-
-    rw::math::Jacobian J = device->baseJframe(tool, state);
-    return J;
 }
 void SamplePlugin::open(WorkCell* workcell)
 {
@@ -662,11 +646,6 @@ rw::math::Q SamplePlugin::VelocityLimitReached(rw::math::Q dq, float dt){
     }
     return dq;
 }
-void SamplePlugin::logTest(){
-    log().info() <<"I've just written this in the log AKA cout\n";
-
-}
-
 void SamplePlugin::stateChangedListener(const State& state) {
   _state = state;
 }

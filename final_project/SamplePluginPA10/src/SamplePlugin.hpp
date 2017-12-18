@@ -49,13 +49,7 @@ public:
 
 
     virtual void initialize();
-    virtual void logTest();
-
-    virtual rw::math::Vector2D<double> pinHoldeModel(rw::math::VectorND<4,double> point, const int fLength);
     virtual rw::math::Jacobian calcJacobianImage(double distance,double U,double V, double focalLenght);
-    virtual rw::math::Jacobian jac(const rw::models::Device::Ptr device, rw::kinematics::State state, const rw::kinematics::Frame* tool,
-                                   const rw::math::Transform3D<double> baseTtool_desired, rw::math::Q q);
-
     virtual rw::math::Q VelocityLimitReached(rw::math::Q dq, float dt);
     virtual void calcEuclidean(Eigen::VectorXd dudv);
     virtual double findBiggestEuclidean(std::vector<double>anyVec);
