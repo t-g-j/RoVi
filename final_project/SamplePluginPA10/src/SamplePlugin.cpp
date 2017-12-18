@@ -336,124 +336,110 @@ void SamplePlugin::timer() {
 
 
 	}
-    // Get the image as a RW image
-
-
-    /* MY CODE */
-    if(trackPoints ==1){
-        static int i = 0;
-        /* Finding frames */
-
-            MovableFrame* marker =(MovableFrame*)_wc->findFrame("Marker");
-            MovableFrame* cameraF =(MovableFrame*)_wc->findFrame("Camera");
-            MovableFrame* worldFrame = (MovableFrame*) _wc->findFrame("WORLD");
 
 
 
-           const rw::math::Vector3D<double> pos(X[i],Y[i],Z[i]);
-           const rw::math::RPY<double> rot(Roll[i],Pitch[i],Yaw[i]);
-           const rw::math::Transform3D<double> transform = marker->getTransform(_state);
-           const rw::math::Transform3D<double> newPos(pos,rot.toRotation3D());
 
-        marker->setTransform(newPos,_state);
-        getRobWorkStudio()->setState(_state);
-        log().info()<<"T\n"<<transform.P()<<"\n"<<"R\n"<<transform.R()<<"\n";
-
-
-        const rw::math::Transform3D<double> postTrans = marker->getTransform(_state);
-        auto MarkerTWorld = Kinematics::frameTframe(marker, worldFrame,_state);
-        auto CameraTMarker = Kinematics::frameTframe(cameraF, marker,_state);
-
-
-        auto MarkerCenterInMarkerFrame = MarkerTWorld*postTrans.P();
-        auto MarkerCenterInCameraFrame = CameraTMarker*MarkerCenterInMarkerFrame;
-        log().info()<<"Transform\n"<<postTrans.P()<<"\n";
-        log().info()<<"markerTworld\n"<<MarkerTWorld<<"\n";
-            log().info()<<"CameraTMarker\n"<<CameraTMarker<<"\n";
-        log().info()<<"MarkerCenterinMarkerFrame\n"<<MarkerCenterInMarkerFrame<<"\n";
-        log().info()<<"MarkerCenterInCameraFrame\n"<<MarkerCenterInCameraFrame<<"\n";
-
-        if(featureDetect == true){
-        Frame* cameraFrame = _wc->findFrame("CameraSim");
-        _framegrabber->grab(cameraFrame, _state);
-        const Image& image = _framegrabber->getImage();
-
-        // Convert to OpenCV image
-        Mat im = toOpenCVImage(image);
-
+    if(trackPoints ==1){                        //loops around tracking one point
+        static int i = 0;                       //Index
+        /******** Finding frames ********/
+        MovableFrame* marker =(MovableFrame*)_wc->findFrame("Marker");
+        MovableFrame* cameraF =(MovableFrame*)_wc->findFrame("Camera");
+        MovableFrame* worldFrame = (MovableFrame*) _wc->findFrame("WORLD");
+        /******** Constants *********/
         Mat imflip;
         Mat rgbOut;
-        cv::flip(im, imflip, 0);
-        cv::cvtColor(imflip,rgbOut,COLOR_BGR2RGB);
-        imwrite("test.png",rgbOut);
-        std::vector<double>test;
-        test.clear();
-        test = feature_methods::markerOneDetection(rgbOut);
+        double half_width = 1024/2;                 // Half size of image width
+        double half_height = 768/2;                 // Half size of images heigth
+        std::vector<double>xy_container;            // Vector holding feature detector coordinates
+        rw::math::Rotation3D<double>baseRot;        // Container for rotation matrix
+        /******** Create transformation matrix for marker *********/
+        const rw::math::Vector3D<double> pos(X[i],Y[i],Z[i]);                       // Load XYZ from .txt file
+        const rw::math::RPY<double> rot(Roll[i],Pitch[i],Yaw[i]);                   // Load RPY from .txt file
+        const rw::math::Transform3D<double> newPos(pos,rot.toRotation3D());         // Create transformation matrix for the marker
 
-        log().info()<<"im\nx: "<<test[0]<<"\ty: "<<test[1]<<"\n";
-        double off_x = 1024/2;
-        double off_y = 768/2;
-        log().info()<<"OFFSETS\nx: "<<off_x-test[0]<<"\ty: "<<off_y-test[1]<<"\n";
+        marker->setTransform(newPos,_state);                                    // Set the marker to the new transformation matrix
+        getRobWorkStudio()->setState(_state);                                   // Update RobWorkStudio
+        log().info()<<"T\n"<<newPos.P()<<"\n"<<"R\n"<<newPos.R()<<"\n";         // debug
 
 
-//        u_center_data = fLenght*(test[0]-off_x)/z;
-//        v_center_data = fLenght*(test[1]-off_y)/z;
-        u_center_data = test[0]-off_x;
-        v_center_data = test[1]-off_y;
-        visionError<<u_center_data<<","<<v_center_data<<"\n";
+        const rw::math::Transform3D<double> postTrans = marker->getTransform(_state);   //Get the transform matrix after the update
+        const rw::math::Transform3D<double> marker2world = Kinematics::frameTframe(marker, worldFrame,_state);  //TransMat for Marker to world frame
+        const rw::math::Transform3D<double> camera2marker = Kinematics::frameTframe(cameraF, marker,_state);    //TransMat Camera to Marker
+
+
+        rw::math::Vector3D<double> markerCenterMarkerFrame = marker2world*postTrans.P();            // Markerens center compared to Marker frame
+        rw::math::Vector3D<double> markerCenterCameraFrame = camera2marker*markerCenterMarkerFrame; // Markerens center compared to Camera frame
+        log().info()<<"Transform\n"<<postTrans.P()<<"\n";
+        log().info()<<"markerTworld\n"<<marker2world<<"\n";
+            log().info()<<"CameraTMarker\n"<<camera2marker<<"\n";
+        log().info()<<"MarkerCenterinMarkerFrame\n"<<markerCenterMarkerFrame<<"\n";
+        log().info()<<"MarkerCenterInCameraFrame\n"<<markerCenterCameraFrame<<"\n";
+        /********* enter if vision is wanted *********/
+        if(featureDetect == true){
+        Frame* cameraFrame = _wc->findFrame("CameraSim");   // Find the simulated camera
+        _framegrabber->grab(cameraFrame, _state);
+        const Image& image = _framegrabber->getImage();
+        Mat im = toOpenCVImage(image);                      // Convert to OpenCV image
+        cv::flip(im, imflip, 0);                            // Flip image to counter mirror effect
+        cv::cvtColor(imflip,rgbOut,COLOR_BGR2RGB);          // Convert to RGB domain
+        imwrite("test.png",rgbOut);                         // debug
+
+        xy_container = feature_methods::markerOneDetection(rgbOut); //running feature detection
+        log().info()<<"im\nx: "<<xy_container[0]<<"\ty: "<<xy_container[1]<<"\n";
+        log().info()<<"OFFSETS\nx: "<<half_width-xy_container[0]<<"\ty: "<<half_height-xy_container[1]<<"\n";
+
+        u = xy_container[0]-half_width;         // Error between feature detection and real center
+        v = xy_container[1]-half_height;        // Error between feature detection and real center
+        visionError<<u<<","<<v<<"\n";
         }
+        /******** If NOT using vision *********/
         else{
-            u_center_data = fLenght*MarkerCenterInCameraFrame[0]/z;
-            v_center_data = fLenght*MarkerCenterInCameraFrame[1]/z;
-            markerError<<u_center_data<<","<<v_center_data<<"\n";
+            u = fLenght*markerCenterCameraFrame[0]/z;       // Mapping to image domian
+            v = fLenght*markerCenterCameraFrame[1]/z;       // Mapping to image domian
+            markerError<<u<<","<<v<<"\n";
         }
-
-        log().info()<<"u: "<<u_center_data<<"\tv:"<<v_center_data<<"\n";
+        log().info()<<"u: "<<u<<"\tv:"<<v<<"\n";
 
         /*************************
          * Method from 4.9
          * *********************/
         /****** JACOBIAN ******/
-        rw::math::Jacobian J = _device->baseJframe(cameraF,_state);
-//        log().info()<<"Jacobian\n"<<J<<"\n";
+        rw::math::Jacobian J = _device->baseJframe(cameraF,_state);     // Get the Jacobian from the robot
+
         /******* S(q) *******/
-        const rw::math::Transform3D<> baseTtool= _device->baseTframe(cameraF,_state);
-        rw::math::Rotation3D<double>baseRot;
+        const rw::math::Transform3D<> baseTtool= _device->baseTframe(cameraF,_state);   // Get the rotaion matrix for S(q)
+
         baseRot = baseTtool.R();
     //    log().info()<<"baseRot\n"<<baseRot<<"\n";
         baseRot.inverse();
         rw::math::Jacobian S(baseRot);
     //    log().info()<<"baseRot\n"<<baseRot<<"\n";
 //        log().info()<<"S(q)\n"<<S<<"\n";
-        /********* Jimage ***********/
-        rw::math::Jacobian jimage=calcJacobianImage(z,u_center_data,v_center_data,fLenght);
 
-        //Zimage
-        auto zimage = (jimage*S*J).e();
+        /********* Jimage ***********/
+        rw::math::Jacobian jimage=calcJacobianImage(z,u,v,fLenght);             // Calculate the image jacobian
+
+        /********* Zimage **********/
+        auto zimage = (jimage*S*J).e();                                         // Calculate Zimage with Morse-Penrose inverse
 //        log().info()<<"zimage\n"<<zimage<<"\n";
         auto zimageT = zimage.transpose();
 //        log().info()<<"JIMAGE\n"<<jimage<<"\n";
         auto zimage_tmp = zimageT * (zimage*zimageT).inverse();
         Eigen::VectorXd dudv(2);
-        dudv(0)=u_center_data;
-        dudv(1)=v_center_data;
-        calcEuclidean(dudv);
-        auto dq = zimage_tmp*dudv;
-
-
-        // Get current robot configuration
-        auto q_cur = _device->getQ(_state);
+        dudv(0)=u;
+        dudv(1)=v;
+        calcEuclidean(dudv);                        // Calculate the maximum Euclidaen
+        auto dq = zimage_tmp*dudv;                  // Calculate displacement vector
+        auto q_cur = _device->getQ(_state);         // Get current robot configuration
         log().info()<<"dq\n"<<dq<<"\n";
-        // Set max vel
-        // Account for Tau
-        const double wTau = dt-tau;
-        // Set max vel
-        rw::math::Q dq_constrained = VelocityLimitReached(rw::math::Q(dq), wTau);
-        // Add the change in robot configuration
-        q_cur += rw::math::Q(-dq_constrained);
-        // Update
-        _device->setQ(q_cur, _state);
-        getRobWorkStudio()->setState(_state);
+        const double wTau = dt-tau;                 // Account for Tau
+        rw::math::Q dq_constrained = maxVel(rw::math::Q(dq), wTau);
+
+        q_cur += rw::math::Q(-dq_constrained);      // Add the change in robot configuration
+
+        _device->setQ(q_cur, _state);               // Set new state
+        getRobWorkStudio()->setState(_state);       // Update
 
         log().info()<<i<<"\n";
         static int count =0;
@@ -466,7 +452,7 @@ void SamplePlugin::timer() {
             i++;
         }
         if(i == size-1){
-            std::pair<rw::math::Q,rw::math::Q> jLim;
+            std::pair<rw::math::Q,rw::math::Q> jLim;    //container for joint position limit
             jLim= _device->getBounds();
             log().info()<<"LOWER\t"<<jLim.first<<"\tUPPER\t"<<jLim.second<<"\n";
             log().info()<<"Biggest Euclideain "<<findBiggestEuclidean(dudvEuclideanDistance)<<"\n";
@@ -485,109 +471,115 @@ void SamplePlugin::timer() {
         }
 
     }
-
+    /********* Enter only if tracking 3 points**********/
     if(trackPoints == 3){
         static int i = 0;
+        /******** Finding frames ********/
         MovableFrame* marker =(MovableFrame*)_wc->findFrame("Marker");
         MovableFrame* cameraF =(MovableFrame*)_wc->findFrame("Camera");
         MovableFrame* worldFrame = (MovableFrame*) _wc->findFrame("WORLD");
+        /******** Constant ********/
 
-        const rw::math::Vector3D<double> pos(X[i],Y[i],Z[i]);
-        const rw::math::RPY<double> rot(Roll[i],Pitch[i],Yaw[i]);
-        const rw::math::Transform3D<double> transform = marker->getTransform(_state);
-        const rw::math::Transform3D<double> newPos(pos,rot.toRotation3D());
+        rw::math::Vector3D<> pos0;
+        rw::math::Vector3D<> pos1;
+        rw::math::Vector3D<> pos2;
+        //Pos on markerframe
+        pos0[0] = 0.15;
+        pos0[1] = 0.15;
+        pos0[2] = 0;
 
-        marker->setTransform(newPos,_state);
-        getRobWorkStudio()->setState(_state);
-        log().info()<<"T\n"<<transform.P()<<"\n"<<"R\n"<<transform.R()<<"\n";
-
-
-        const rw::math::Transform3D<double> postTrans = marker->getTransform(_state);
-        auto MarkerTWorld = Kinematics::frameTframe(marker, worldFrame,_state);
-        auto CameraTMarker = Kinematics::frameTframe(cameraF, marker,_state);
-
-
-        // Offsets
-        rw::math::Vector3D<> Offset0;
-        rw::math::Vector3D<> Offset1;
-        rw::math::Vector3D<> Offset2;
-        Offset0[0] = 0.15;
-        Offset0[1] = 0.15;
-        Offset0[2] = 0;
-
-        Offset1[0] = -0.15;
-        Offset1[1] = 0.15;
-        Offset1[2] = 0;
-
-        Offset2[0] = 0.15;
-        Offset2[1] = -0.15;
-        Offset2[2] = 0;
-        rw::math::Transform3D<double> Offset0T(Offset0);
-        rw::math::Transform3D<double> Offset1T(Offset1);
-        rw::math::Transform3D<double> Offset2T(Offset2);
-
-        auto MarkerPosition0InMarkerFrame = Offset0T * MarkerTWorld*postTrans.P();
-        auto MarkerPosition1InMarkerFrame = Offset1T * MarkerTWorld*postTrans.P();
-        auto MarkerPosition2InMarkerFrame = Offset2T * MarkerTWorld*postTrans.P();
-
-        auto MarkerPosition0InCameraFrame = CameraTMarker*MarkerPosition0InMarkerFrame;
-        auto MarkerPosition1InCameraFrame = CameraTMarker*MarkerPosition1InMarkerFrame;
-        auto MarkerPosition2InCameraFrame = CameraTMarker*MarkerPosition2InMarkerFrame;
-
-
+        pos1[0] = -0.15;
+        pos1[1] = 0.15;
+        pos1[2] = 0;
+        pos2[0] = 0.15;
+        pos2[1] = -0.15;
+        pos2[2] = 0;
+        rw::math::Transform3D<double> pos0Trans(pos0);
+        rw::math::Transform3D<double> pos1Trans(pos1);
+        rw::math::Transform3D<double> pos2Trans(pos2);
         double u0,v0,u1,v1,u2,v2;
-        double x0 =  MarkerPosition0InCameraFrame[0];
-        double y0 =  MarkerPosition0InCameraFrame[1];
-        double x1 =  MarkerPosition1InCameraFrame[0];
-        double y1 =  MarkerPosition1InCameraFrame[1];
-        double x2 =  MarkerPosition2InCameraFrame[0];
-        double y2 =  MarkerPosition2InCameraFrame[1];
-        u0 = fLenght*x0/z;
-        v0 = fLenght*y0/z;
-        u1 = fLenght*x1/z;
-        v1 = fLenght*y1/z;
-        u2 = fLenght*x2/z;
-        v2 = fLenght*y2/z;
-        auto Offset0InImageu = fLenght*(-Offset0(0))/z;
-        auto Offset0InImagev = fLenght*Offset0(1)/z;
-        auto Offset1InImageu = fLenght*(-Offset1(0))/z;
-        auto Offset1InImagev = fLenght*Offset1(1)/z;
-        auto Offset2InImageu = fLenght*(-Offset2(0))/z;
-        auto Offset2InImagev = fLenght*Offset2(1)/z;
-        Eigen::VectorXd dudv(trackPoints*2);
-        dudv(0) =  - u0;
-        dudv(1) =  - v0;
-        dudv(0) = Offset0InImageu - u0;
-        dudv(1) = Offset0InImagev - v0;
-        dudv(2) = Offset1InImageu - u1;
-        dudv(3) = Offset1InImagev - v1;
-        dudv(4) = Offset2InImageu - u2;
-        dudv(5) = Offset2InImagev - v2;
+        Eigen::MatrixXd Jtmp(6,6);
+        const double wTau = dt-tau;
+        /******** Create transformation matrix for marker *********/
+        const rw::math::Vector3D<double> pos(X[i],Y[i],Z[i]);               // Load XYZ from .txt file
+        const rw::math::RPY<double> rot(Roll[i],Pitch[i],Yaw[i]);           // Load RPY from .txt file
+        const rw::math::Transform3D<double> newPos(pos,rot.toRotation3D()); // Set the marker to the new transformation matrix
+
+        marker->setTransform(newPos,_state);        // update RobWorkStudio
+        getRobWorkStudio()->setState(_state);       // debug
+
+
+
+        const rw::math::Transform3D<double> postTrans = marker->getTransform(_state);//get the transform matrix after the update
+        const rw::math::Transform3D<double> marker2world = Kinematics::frameTframe(marker, worldFrame,_state);     //TransMat for Marker to world frame
+        const rw::math::Transform3D<double> camera2marker = Kinematics::frameTframe(cameraF, marker,_state);       //TransMat Camera to Marker
+
+
+
+
+        rw::math::Vector3D<double> markerPos0MarkerF = pos0Trans * marker2world*postTrans.P();      // Position vector made of  Makerframe,CurrentPosition and a pos
+        rw::math::Vector3D<double> markerPos1MarkerF = pos1Trans * marker2world*postTrans.P();      // Position vector made of  Makerframe,CurrentPosition and a pos
+        rw::math::Vector3D<double> markerPos2MarkerF = pos2Trans * marker2world*postTrans.P();      // Position vector made of  Makerframe,CurrentPosition and a pos
+
+        rw::math::Vector3D<double> markerPos0CameraF = camera2marker*markerPos0MarkerF;             // Position Vector made of new newPos vector and the pos between camera and marker
+        rw::math::Vector3D<double> markerPos1CameraF = camera2marker*markerPos1MarkerF;             // Position Vector made of new newPos vector and the pos between camera and marker
+        rw::math::Vector3D<double> markerPos2CameraF = camera2marker*markerPos2MarkerF;             // Position Vector made of new newPos vector and the pos between camera and marker
+
+
+
+        double x0 =  markerPos0CameraF[0];      // Marker frames pos in cameraframe
+        double y0 =  markerPos0CameraF[1];      // Marker frames pos in cameraframe
+        double x1 =  markerPos1CameraF[0];      // Marker frames pos in cameraframe
+        double y1 =  markerPos1CameraF[1];      // Marker frames pos in cameraframe
+        double x2 =  markerPos2CameraF[0];      // Marker frames pos in cameraframe
+        double y2 =  markerPos2CameraF[1];      // Marker frames pos in cameraframe
+        u0 = fLenght*x0/z;                  // Mapping to image domian
+        v0 = fLenght*y0/z;                  // Mapping to image domian
+        u1 = fLenght*x1/z;                  // Mapping to image domian
+        v1 = fLenght*y1/z;                  // Mapping to image domian
+        u2 = fLenght*x2/z;                  // Mapping to image domian
+        v2 = fLenght*y2/z;                  // Mapping to image domian
+        double pos0u = fLenght*(-pos0(0))/z;    // Mapping to image domian
+        double pos0v = fLenght*pos0(1)/z;       // Mapping to image domian
+        double pos1u = fLenght*(-pos1(0))/z;    // Mapping to image domian
+        double pos1v = fLenght*pos1(1)/z;       // Mapping to image domian
+        double pos2u = fLenght*(-pos2(0))/z;    // Mapping to image domian
+        double pos2v = fLenght*pos2(1)/z;       // Mapping to image domian
+        Eigen::VectorXd dudv(6);
+        dudv(0) =  - u0;                // "Error" / displacement
+        dudv(1) =  - v0;                // "Error" / displacement
+        dudv(0) = pos0u - u0;           // "Error" / displacement
+        dudv(1) = pos0v - v0;           // "Error" / displacement
+        dudv(2) = pos1u - u1;           // "Error" / displacement
+        dudv(3) = pos1v - v1;           // "Error" / displacement
+        dudv(4) = pos2u - u2;           // "Error" / displacement
+        dudv(5) = pos2v - v2;           // "Error" / displacement
         calcEuclidean(dudv);
         auto Jimage0 = calcJacobianImage(z,u0,v0,fLenght).e();
         auto Jimage1 = calcJacobianImage(z,u1,v1,fLenght).e();
         auto Jimage2 = calcJacobianImage(z,u2,v2,fLenght).e();
 
-        Eigen::MatrixXd JCombined(trackPoints*2,6);
-        JCombined.row(0) << Jimage0.row(0);
-        JCombined.row(1) << Jimage0.row(1);
-        JCombined.row(2) << Jimage1.row(0);
-        JCombined.row(3) << Jimage1.row(1);
-        JCombined.row(4) << Jimage2.row(0);
-        JCombined.row(5) << Jimage2.row(1);
-        auto Jimage = rw::math::Jacobian(JCombined);
+
+        Jtmp.row(0) << Jimage0.row(0);
+        Jtmp.row(1) << Jimage0.row(1);
+        Jtmp.row(2) << Jimage1.row(0);
+        Jtmp.row(3) << Jimage1.row(1);
+        Jtmp.row(4) << Jimage2.row(0);
+        Jtmp.row(5) << Jimage2.row(1);
+        auto Jimage = rw::math::Jacobian(Jtmp);
         log().info()<<"Jimage\n"<<Jimage<<"\n";
         // Gets transform from base to tool
-        auto TToolWorld = _device->baseTframe(cameraF, _state);
+        auto base2cameraF = _device->baseTframe(cameraF, _state);
 
-        /* Calculate S*/
-        auto RBaseTool = TToolWorld.R().inverse();
+        /*********  S(q) ***************/
+        auto RBaseTool = base2cameraF.R().inverse();
         auto S = rw::math::Jacobian(RBaseTool);
 
-        /* Robot Jacobian */
+        /********* Robot Jacobian ********************/
         auto J = _device->baseJframe(cameraF, _state); // Returns jacobian from tool to base frame.
 
-        auto Zimage = (Jimage*S*J).e();
+        /******** Zimage *******************/
+        auto Zimage = (Jimage*S*J).e();                     // Calculate Zimage with Morse-Penrose inverse
         auto ZimageT = Zimage.transpose();
         auto Zimage_tmp = ZimageT * (Zimage*ZimageT).inverse();
         auto dq = Zimage_tmp*dudv;
@@ -600,9 +592,9 @@ void SamplePlugin::timer() {
         log().info()<<"q_cur\n"<<q_cur<<"\n";
 
         // Account for Tau
-        const double wTau = dt-tau;
+
         // Set max vel
-        rw::math::Q dq_constrained = VelocityLimitReached(rw::math::Q(dq), dt);
+        rw::math::Q dq_constrained = maxVel(rw::math::Q(dq), wTau);
 
         // Add the change in robot configuration
         q_cur += rw::math::Q(dq_constrained);
@@ -632,7 +624,7 @@ void SamplePlugin::timer() {
     }
 
 }
-rw::math::Q SamplePlugin::VelocityLimitReached(rw::math::Q dq, float dt){
+rw::math::Q SamplePlugin::maxVel(rw::math::Q dq, float dt){
 
     auto maxQvel = _device->getVelocityLimits();
     auto cur_velocity = dq/dt;

@@ -50,7 +50,7 @@ public:
 
     virtual void initialize();
     virtual rw::math::Jacobian calcJacobianImage(double distance,double U,double V, double focalLenght);
-    virtual rw::math::Q VelocityLimitReached(rw::math::Q dq, float dt);
+    virtual rw::math::Q maxVel(rw::math::Q dq, float dt);
     virtual void calcEuclidean(Eigen::VectorXd dudv);
     virtual double findBiggestEuclidean(std::vector<double>anyVec);
 
@@ -82,15 +82,23 @@ private:
     std::vector<double>Yaw;
     const float fLenght = 823;
     const float  z = 0.5;
-    double u_center_data;
-    double v_center_data;
+    double u;
+    double v;
     const float dt = 1.;
-
     const double tau = 35520/1000000;
-    int trackPoints = 1;// either 1 or 3 points is possible
-    bool featureDetect = true;
+    std::vector<double>dudvEuclideanDistance;
+    std::vector<double>dudvEuclideanDistance3P;
+    const std::string _device_name = "PA10";
+    rw::models::Device::Ptr _device;
     int size;
     std::string file ="fast"; // choose from slow, medium or fast
+
+    /****** Primitive hardcoding controller *********/
+    int trackPoints = 1;                            // either 1 or 3 points is possible
+    bool featureDetect = true;                      // true or false -> with or without feature detection
+    /***********************************************/
+
+    /**** Log files *****/
     std::ofstream JointPosAndToolPos;
     std::ofstream errorLog;
     std::ofstream JointLimitAndVelocities;
@@ -101,10 +109,7 @@ private:
     std::ofstream JointLimitAndVelocities3P;
     std::ofstream JointPosAndToolPos3P;
 
-    std::vector<double>dudvEuclideanDistance;
-    std::vector<double>dudvEuclideanDistance3P;
-    const std::string _device_name = "PA10";
-    rw::models::Device::Ptr _device;
+
 
 };
 
