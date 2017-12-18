@@ -11,6 +11,7 @@
 #include <rw/kinematics/MovableFrame.hpp>
 #include <rw/kinematics.hpp>
 
+
 // RobWorkStudio includes
 #include <RobWorkStudioConfig.hpp> // For RWS_USE_QT5 definition
 #include <rws/RobWorkStudioPlugin.hpp>
@@ -89,7 +90,7 @@ private:
     const float  z = 0.5;
     double u_center_data;
     double v_center_data;
-    const float dt = .05;
+    const float dt = 1.;
 
     const double tau = 35520/1000000;
     int trackPoints = 1;// either 1 or 3 points is possible
@@ -99,6 +100,8 @@ private:
     std::ofstream JointPosAndToolPos;
     std::ofstream errorLog;
     std::ofstream JointLimitAndVelocities;
+    std::ofstream visionError;
+    std::ofstream markerError;
 
     std::ofstream errorLog3P;
     std::ofstream JointLimitAndVelocities3P;

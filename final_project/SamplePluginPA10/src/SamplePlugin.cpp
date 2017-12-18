@@ -152,6 +152,8 @@ void SamplePlugin::startTrack(){
         JointPosAndToolPos3P.open("JointPosAndToolPos3P.txt");
         errorLog3P.open("errorLog3P.txt");
         JointLimitAndVelocities3P.open("JointLimitAndVelocities3P.txt");
+        visionError.open("visionError.txt");
+        markerError.open("markerError.txt");
     }
 
 }
@@ -407,16 +409,21 @@ void SamplePlugin::timer() {
         log().info()<<"im\nx: "<<test[0]<<"\ty: "<<test[1]<<"\n";
         double off_x = 1024/2;
         double off_y = 768/2;
-        log().info()<<"OFFSETS\nx: "<<test[0]-off_x<<"\ty: "<<test[1]-off_y<<"\n";
+        log().info()<<"OFFSETS\nx: "<<off_x-test[0]<<"\ty: "<<off_y-test[1]<<"\n";
+
+
 //        u_center_data = fLenght*(test[0]-off_x)/z;
 //        v_center_data = fLenght*(test[1]-off_y)/z;
         u_center_data = test[0]-off_x;
         v_center_data = test[1]-off_y;
+        visionError<<u_center_data<<","<<v_center_data<<"\n";
         }
         else{
             u_center_data = fLenght*MarkerCenterInCameraFrame[0]/z;
             v_center_data = fLenght*MarkerCenterInCameraFrame[1]/z;
+            markerError<<u_center_data<<","<<v_center_data<<"\n";
         }
+
         log().info()<<"u: "<<u_center_data<<"\tv:"<<v_center_data<<"\n";
 
         /*************************
@@ -475,11 +482,16 @@ void SamplePlugin::timer() {
             i++;
         }
         if(i == size-1){
+            std::pair<rw::math::Q,rw::math::Q> jLim;
+            jLim= _device->getBounds();
+            log().info()<<"LOWER\t"<<jLim.first<<"\tUPPER\t"<<jLim.second<<"\n";
             log().info()<<"Biggest Euclideain "<<findBiggestEuclidean(dudvEuclideanDistance)<<"\n";
             errorLog<<findBiggestEuclidean(dudvEuclideanDistance);
             JointPosAndToolPos.close();
             errorLog.close();
             JointLimitAndVelocities.close();
+            visionError.close();
+            markerError.close();
             log().info()<<"closed file\n";
 
             if(featureDetect == false){
@@ -623,8 +635,10 @@ void SamplePlugin::timer() {
             i++;
         }
         if(i == size-1){
+
 //            log().info()<<"Biggest Euclideain "<<findBiggestEuclidean(dudvEuclideanDistance3P)<<"\n";
             errorLog3P<<findBiggestEuclidean(dudvEuclideanDistance3P);
+
             errorLog3P.close();
             JointPosAndToolPos3P.close();
             JointLimitAndVelocities3P.close();
